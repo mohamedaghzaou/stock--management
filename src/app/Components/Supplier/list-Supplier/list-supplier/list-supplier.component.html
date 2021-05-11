@@ -1,0 +1,53 @@
+<table class="table table-hover">
+    <thead class="">
+        <tr>
+            <th>
+                Nom complete
+            </th>
+            <th>
+                E-Mail
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Teli
+            </th>
+            <th>
+                Date de la creation
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let supplier of listSupplier">
+            <td>
+                {{supplier.firstname | uppercase }}{{ " " + supplier.lastname }}
+            </td>
+            <td>
+                {{supplier.email}}
+            </td>
+            <td>
+                {{supplier.address}}
+            </td>
+            <td>
+                {{supplier.phone}}
+            </td>
+            <td>
+                {{supplier.createDate}}
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="Delete(supplier.id)">supprimer</button>
+            </td>
+            <td>
+                <button class="btn btn-success" (click)="update(supplier.id)">modifier</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

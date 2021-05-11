@@ -1,0 +1,36 @@
+<section class="get-in-touch">
+
+    <h3 class="title">Ajouter Supplier</h3>
+    <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">
+        {{errorMessage}}
+    </div>
+    <form class="contact-form row" [formGroup]="form" (ngSubmit)="addsupplier()">
+        <div class="row col-lg-12">
+            <div class="form-field col-lg-6">
+                <input id="Prenom" class="input-text js-input" type="text" formControlName="firstname" required>
+                <label class="label" for="Prenom">Prenom : </label>
+            </div>
+            <div class="form-field col-lg-6">
+                <input id="Nom" class="input-text js-input" type="text" formControlName="lastname" required>
+                <label class="label" for="Nom">Nom :</label>
+            </div>
+        </div>
+        <div class="form-field col-lg-12">
+            <input id="email" class="input-text js-input" type="email" formControlName="email" required>
+            <label class="label" for="email">E-mail :</label>
+        </div>
+        <div class="form-field col-lg-12">
+            <input id="phone" class="input-text js-input" type="text" formControlName="phone" required>
+            <label class="label" for="phone">Tel :</label>
+        </div>
+        <div class="form-field col-lg-12">
+            <input id="Address" class="input-text js-input" type="text" formControlName="address" required>
+            <label class="label" for="Address">Address</label>
+        </div>
+        <div class="form-field col-lg-12 ">
+            <input class="submit-btn text-center" type="submit" value="Ajouter">
+        </div>
+        <a routerLink="/user-list" class="backbutton">Back To List</a>
+
+    </form>
+</section>
