@@ -9,7 +9,6 @@ import { EditSupplierComponent } from './Components/Supplier/edit-supplier/edit-
 import { AddProductComponent } from './Components/Product/add-product/add-product.component';
 import { ListProductComponent } from './Components/Product/list-product/list-product.component';
 import { EditProductComponent } from './Components/Product/edit-product/edit-product.component';
-import { AddEmployeeComponent } from './Components/Employee/add-employee/add-employee.component';
 import { ListEmployeeComponent } from './Components/Employee/list-employee/list-employee.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ListEmployeeComponent } from './Components/Employee/list-employee/list-
     AddProductComponent,
     ListProductComponent,
     EditProductComponent,
-    AddEmployeeComponent,
     ListEmployeeComponent,
   ],
   imports: [

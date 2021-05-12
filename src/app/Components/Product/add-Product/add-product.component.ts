@@ -16,16 +16,19 @@ export class AddProductComponent implements OnInit {
     this.form= this.fb.group({
       name : ['',[Validators.required]],
       Prix : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
-      Quantity : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
+      quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
       description : [''],
       Category : [''],
     })
+    //dumy data
     this.listCategory= [{id:1,name:"C1"},
     {id:1,name:"C1"},
     {id:1,name:"C1"},
     {id:1,name:"C1"},
     {id:1,name:"C1"}]
   }
+
+  //handle adding a new operation
   addProduct(){
         console.log(this.form.value)
   }

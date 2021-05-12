@@ -5,7 +5,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" placeholder="Nom" formControlName="name" />
-                    <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligqtoire                    </small>
+                    <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligqtoire</small>
                     <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
                 </div>
                 <div class="form-group ">
@@ -14,9 +14,9 @@
                     <small class="text-danger" *ngIf="form.get('Prix').invalid && form.get('Prix').touched && form.get('Prix').value!==''">Value est invalid</small>
                 </div>
                 <div class="form-group">
-                    <input type="number" name="Quantity" class="form-control" placeholder="Quantity" formControlName="Quantity" />
-                    <small class="text-danger" *ngIf="form.get('Quantity').errors?.required && form.get('Quantity').touched">Cette champ est obligqtoire</small>
-                    <small class="text-danger" *ngIf="form.get('Quantity').invalid && form.get('Quantity').touched && form.get('Quantity').value!==''">Value est invalid</small>
+                    <input type="number" name="quantityStock" class="form-control" placeholder="quantityStock" formControlName="quantityStock" />
+                    <small class="text-danger" *ngIf="form.get('quantityStock').errors?.required && form.get('quantityStock').touched">Cette champ est obligqtoire</small>
+                    <small class="text-danger" *ngIf="form.get('quantityStock').invalid && form.get('quantityStock').touched && form.get('quantityStock').value!==''">Value est invalid</small>
                 </div>
                 <div class="form-group ">
                     <select name="Category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" formControlName="Category">
@@ -24,9 +24,9 @@
                       </select>
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="form-group ">
-                    <textarea name="description" class="form-control " placeholder="Description " style="width: 100%; height: 150px;" formControlName="description"></textarea>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="description" class="form-control" placeholder="Description " style="width: 100%; height: 150px;" formControlName="description"></textarea>
                 </div>
             </div>
             <div>
