@@ -10,6 +10,12 @@ import { AddProductComponent } from './Components/Product/add-product/add-produc
 import { ListProductComponent } from './Components/Product/list-product/list-product.component';
 import { EditProductComponent } from './Components/Product/edit-product/edit-product.component';
 import { ListEmployeeComponent } from './Components/Employee/list-employee/list-employee.component';
+import { AddCustomerComponent } from './Components/Customer/add-customer/add-customer.component';
+import { ListCustomerComponent } from './Components/Customer/list-customer/list-customer.component';
+import { EditCustomerComponent } from './Components/Customer/edit-customer/edit-customer.component';
+import { ListCategoryComponent } from './Components/Category/list-category/list-category.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { LoginComponent } from './Components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,12 @@ import { ListEmployeeComponent } from './Components/Employee/list-employee/list-
     ListProductComponent,
     EditProductComponent,
     ListEmployeeComponent,
+    AddCustomerComponent,
+    ListCustomerComponent,
+    EditCustomerComponent,
+    ListCategoryComponent,
+    SidebarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
