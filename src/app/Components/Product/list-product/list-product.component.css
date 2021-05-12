@@ -1,0 +1,20 @@
+table {
+    font-size: 0.9rem;
+}
+
+thead {
+    background-color: rgb(146, 178, 157);
+    color: cornsilk;
+}
+
+.email span {
+    display: block;
+}
+
+.email span:first-child {
+    font-weight: bold;
+}
+
+.img {
+    height: 4rem;
+}

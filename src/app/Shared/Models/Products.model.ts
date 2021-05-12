@@ -1,3 +1,5 @@
+import { Category } from "./Category.model";
+
 export class Product{
 	  id?:number;
 	  name :String;
@@ -7,5 +9,5 @@ export class Product{
 	  updateDate? : Date;
 	  image : String;
 	  quantityStock :number;
-	  Category :String;
+	  category :Category;
 }

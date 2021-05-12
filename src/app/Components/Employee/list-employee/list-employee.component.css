@@ -1,0 +1,9 @@
+tbody tr:nth-child(2n) {
+    background-color: rgb(230, 240, 231);
+}
+
+.form {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0.1rem;
+}
