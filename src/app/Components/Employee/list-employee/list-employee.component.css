@@ -2,8 +2,21 @@ tbody tr:nth-child(2n) {
     background-color: rgb(230, 240, 231);
 }
 
-.form {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 0.1rem;
+table thead tr th {
+    background-color: var(--main-bg-color);
+}
+
+.container {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+select {
+    border: none;
+    height: 2.3rem !important;
+    margin-top: 0;
+}
+
+.btn {
+    margin-top: 0;
 }

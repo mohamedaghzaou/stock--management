@@ -1,37 +1,41 @@
-<div class="container contact-form">
-    <form [formGroup]="form" (ngSubmit)="addProduct()">
-        <h3 class="text-center">Ajouter Un Produit</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Nom" formControlName="name" />
-                    <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligqtoire</small>
-                    <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
-                </div>
-                <div class="form-group ">
-                    <input type="text" name="Prix" class="form-control " placeholder="Prix" formControlName="Prix" />
-                    <small class="text-danger" *ngIf="form.get('Prix').errors?.required && form.get('Prix').touched">Cette champ est obligqtoire </small>
-                    <small class="text-danger" *ngIf="form.get('Prix').invalid && form.get('Prix').touched && form.get('Prix').value!==''">Value est invalid</small>
-                </div>
-                <div class="form-group">
-                    <input type="number" name="quantityStock" class="form-control" placeholder="quantityStock" formControlName="quantityStock" />
-                    <small class="text-danger" *ngIf="form.get('quantityStock').errors?.required && form.get('quantityStock').touched">Cette champ est obligqtoire</small>
-                    <small class="text-danger" *ngIf="form.get('quantityStock').invalid && form.get('quantityStock').touched && form.get('quantityStock').value!==''">Value est invalid</small>
-                </div>
-                <div class="form-group ">
-                    <select name="Category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" formControlName="Category">
+<div class="add-container">
+
+    <div class="container contact-form">
+        <form [formGroup]="form" (ngSubmit)="addProduct()">
+            <h3 class="text-center" style="margin-bottom: 2rem;">Ajouter Un Produit</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Nom" formControlName="name" />
+                        <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligatoire</small>
+                        <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" name="Prix" class="form-control " placeholder="Prix" formControlName="Prix" />
+                        <small class="text-danger" *ngIf="form.get('Prix').errors?.required && form.get('Prix').touched">Cette champ est obligatoire </small>
+                        <small class="text-danger" *ngIf="form.get('Prix').invalid && form.get('Prix').touched && form.get('Prix').value!==''">Value est invalid</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="quantityStock" class="form-control" placeholder="quantityStock" formControlName="quantityStock" />
+                        <small class="text-danger" *ngIf="form.get('quantityStock').errors?.required && form.get('quantityStock').touched">Cette champ est obligatoire</small>
+                        <small class="text-danger" *ngIf="form.get('quantityStock').invalid && form.get('quantityStock').touched && form.get('quantityStock').value!==''">Value est invalid</small>
+                    </div>
+
+                    <div class="form-group ">
+                        <select name="Category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" formControlName="Category">
                         <option *ngFor="let c of listCategory" [ngValue]="c.id">{{c.name}}</option>
                       </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea name="description" class="form-control" rows="9" placeholder="Description" formControlName="description"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-primary text-capitalize " value="Ajouter " style="cursor: pointer; width: 20%;">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="Description " style="width: 100%; height: 150px;" formControlName="description"></textarea>
-                </div>
-            </div>
-            <div>
-                <input type="submit" class="btn btn-primary " value="Ajouter " style="cursor: pointer;margin-left: 0.8rem; ">
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

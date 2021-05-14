@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/Shared/Models/Category.model';
 import { Product } from 'src/app/Shared/Models/Products.model';
 
@@ -13,7 +13,7 @@ export class EditProductComponent implements OnInit {
   form:FormGroup;
   listCategory : Category[]=[]
   product:Product={name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:3,name:"mmm"}};
-  constructor(private fb:FormBuilder,private activeRoute:ActivatedRoute) { }
+  constructor(private fb:FormBuilder,private activeRoute:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.form= this.fb.group({
@@ -42,7 +42,7 @@ export class EditProductComponent implements OnInit {
 
   }
   cancel(){
-
+      this.router.navigate(["/home/products"])
   }
   }
 
