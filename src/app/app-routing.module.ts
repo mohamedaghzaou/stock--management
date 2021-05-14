@@ -1,3 +1,6 @@
+import { DetailOrderComponent } from './Components/order/detail-order/detail-order.component';
+import { AddOrderComponent } from './Components/order/add-order/add-order.component';
+import { AddSupplierComponent } from './Components/Supplier/add-Supplier/add-supplier/add-supplier.component';
 import { AddCustomerComponent } from './Components/Customer/add-customer/add-customer.component';
 import { EditCustomerComponent } from './Components/Customer/edit-customer/edit-customer.component';
 import { ListCustomerComponent } from './Components/Customer/list-customer/list-customer.component';
@@ -6,19 +9,23 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListOrderComponent } from './Components/order/list-order/list-order.component';
+import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home',
   component: SidebarComponent,
   children: [
-    {path: 'customers', component: ListCustomerComponent},
-    {path: 'customer/:id', component: EditCustomerComponent},
-    {path: 'customer', component: AddCustomerComponent},
+    {path: 'customer', component: ListCustomerComponent},
+    {path: 'customer/edit/:id', component: EditCustomerComponent},
+    {path: 'customer/orders/:id', component: CustOrderComponent},
+    {path: 'customer/add', component: AddCustomerComponent},
     // {path: 'dete', component: DetailsCustomerComponent},
     {path: 'category/add', component: AddCustomerComponent},
-    // {path: 'order/add', component: AddOrderComponent},
-    {path: 'employe', component: ListEmployeeComponent}
+    {path: 'order/add', component: AddOrderComponent},
+    {path: 'order', component: ListOrderComponent},
+    {path: 'order/details/:id', component: DetailOrderComponent},
   ]}  
 ];
 

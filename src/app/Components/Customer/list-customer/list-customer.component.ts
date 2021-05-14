@@ -12,4 +12,9 @@ export class ListCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  
+  delete(){
+    
+  }
 }
