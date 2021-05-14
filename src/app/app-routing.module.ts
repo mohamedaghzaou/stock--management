@@ -9,8 +9,14 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListOrderComponent } from './Components/order/list-order/list-order.component';
+import { AddProductComponent } from './Components/Product/add-product/add-product.component';
+import { EditProductComponent } from './Components/Product/edit-product/edit-product.component';
+import { ListProductComponent } from './Components/Product/list-product/list-product.component';
+import { ListSupplierComponent } from './Components/Supplier/list-Supplier/list-supplier/list-supplier.component';
+// import { AddSupplierComponent } from './Components/Supplier/add-Supplier/add-supplier/add-supplier.component';
+import { EditSupplierComponent } from './Components/Supplier/edit-supplier/edit-supplier.component';
 import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
+import { ListOrderComponent } from './Components/order/list-order/list-order.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},

@@ -27,7 +27,9 @@ export class ListEmployeeComponent implements OnInit {
    }
 
    delete(id:number){
-
+     console.log(id);
+      const idEmployee =   this.listEmployee.findIndex(x=>x.id==id);
+      this.listEmployee.splice(idEmployee,1);
    }
    fill(id:number){
    this.form.patchValue(this.listEmployee[id]);

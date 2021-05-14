@@ -50,7 +50,7 @@ export class EditSupplierComponent implements OnInit {
   getsupplier(id:number){
       //this.form.patchValue()
   }
-  cancle(){
+  cancel(){
   }
 
 }
