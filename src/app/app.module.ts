@@ -21,6 +21,9 @@ import { DetailOrderComponent } from './Components/order/detail-order/detail-ord
 import { AddOrderComponent } from './Components/order/add-order/add-order.component';
 import { LigneComponent } from './Components/order/ligne/ligne.component';
 import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

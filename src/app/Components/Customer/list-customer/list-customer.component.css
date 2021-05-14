@@ -98,6 +98,7 @@ body{margin-top:20px;}
 .table a.table-link {
 	margin: 0 5px;
 	font-size: 1.125em;
+	cursor: pointer;
 }
 .table a.table-link:hover {
 	text-decoration: none;

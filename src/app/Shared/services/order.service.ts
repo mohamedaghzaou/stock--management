@@ -1,21 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Product } from './../Models/Products.model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-
+  url = ' http://localhost:8098';
   private cartOrder: CartOrder = {
     idClient: 0,
     lignes : [new Ligne('first')]
   };
 
+
   carts$ = new BehaviorSubject<CartOrder>(this.cartOrder);
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
 
@@ -30,6 +34,10 @@ export class OrderService {
     this.carts$.next(this.cartOrder);
   }
 
+  getAllOrder(): Observable<any>{
+    return this.http.get<any>(this.url+'/order');
+
+  }
 
   addLigne(): any {
    let prod = new Ligne(this.uuidv4());
@@ -37,9 +45,22 @@ export class OrderService {
    this.carts$.next(this.cartOrder);
   }
 
-  passOrder(idClient): any{
+  passOrder(idClient): Observable<any>{
     this.cartOrder.idClient = idClient;
     console.log(this.cartOrder);
+    return this.http.post(this.url+'/order/add',this.cartOrder).pipe(
+     map(res => {
+       console.log('froooom pipeee');
+       this.cartOrder = {
+          idClient: 0,
+          lignes : [new Ligne('first')]
+        };
+       this.carts$.next(this.cartOrder);
+     })
+   );
+
+   
+
   }
 
   valideLigne(item, id): any{

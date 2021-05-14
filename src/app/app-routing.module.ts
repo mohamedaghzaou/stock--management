@@ -1,3 +1,4 @@
+import { ListCategoryComponent } from './Components/Category/list-category/list-category.component';
 import { DetailOrderComponent } from './Components/order/detail-order/detail-order.component';
 import { AddOrderComponent } from './Components/order/add-order/add-order.component';
 import { AddSupplierComponent } from './Components/Supplier/add-Supplier/add-supplier/add-supplier.component';
@@ -28,11 +29,11 @@ const routes: Routes = [
     {path: 'customer/orders/:id', component: CustOrderComponent},
     {path: 'customer/add', component: AddCustomerComponent},
     // {path: 'dete', component: DetailsCustomerComponent},
-    {path: 'category/add', component: AddCustomerComponent},
+    {path: 'category', component: ListCategoryComponent},
     {path: 'order/add', component: AddOrderComponent},
     {path: 'order', component: ListOrderComponent},
     {path: 'order/details/:id', component: DetailOrderComponent},
-  ]}  
+  ]}
 ];
 
 @NgModule({

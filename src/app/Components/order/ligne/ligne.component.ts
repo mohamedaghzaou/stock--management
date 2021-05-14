@@ -23,7 +23,7 @@ export class LigneComponent implements OnInit {
   createForm(): any{
     this.myForm = this.fb.group({
       quantity: ['', [Validators.required]],
-      prixht : ['', [Validators.required]],
+      prix : ['', [Validators.required]],
       tva : [20, [Validators.required]],
       reduction : ['', [Validators.email,Validators.required]],
       totalHT : ['', [Validators.required]],
@@ -48,7 +48,7 @@ export class LigneComponent implements OnInit {
  
 
   change(): any{
-    var tHt = this.myForm.get('quantity').value*this.myForm.get('prixht').value-this.myForm.get('reduction').value; 
+    var tHt = this.myForm.get('quantity').value*this.myForm.get('prix').value-this.myForm.get('reduction').value; 
     this.myForm.get("totalHT").setValue(tHt);
     var tttc = (this.myForm.get('totalHT').value*(this.myForm.get('tva').value/100))+this.myForm.get('totalHT').value
     this.myForm.get("totalTTC").setValue(tttc);

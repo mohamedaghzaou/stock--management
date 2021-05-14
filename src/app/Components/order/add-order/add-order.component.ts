@@ -1,3 +1,4 @@
+import { CustomerService } from './../../../Shared/services/customer.service';
 import { OrderService } from './../../../Shared/services/order.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -10,36 +11,49 @@ import { CartOrder } from 'src/app/Shared/services/order.service';
 })
 export class AddOrderComponent implements OnInit {
 
-  articles=[1];
-  count=1;
+  client = [];
   cartOrder$: CartOrder;
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private orderService: OrderService) { }
+  constructor(private fb: FormBuilder, 
+              private orderService: OrderService,
+              private customerService: CustomerService
+              ) { }
   // constructor(){}
 
   ngOnInit(): void {
    this.createForm();
    this.orderService.carts$.subscribe(
      res => this.cartOrder$ = res
-   )
+   );
+   this.getClient();
 
   }
 
   createForm(): any{
     this.myForm = this.fb.group({
-
       idClient : ['', [Validators.required]],
     })
   }
 
   valide():any{
-  this.orderService.passOrder(this.myForm.get("idClient").value);
-
+  this.orderService.passOrder(this.myForm.get("idClient").value).subscribe(
+    res => {
+      console.log(res);
+    },
+    err => {console.log(err);}
+  );
   }
-  
+
   AjouterLign(){
     this.orderService.addLigne();
   }
 
+
+  getClient(){
+    this.customerService.getItems().subscribe(
+      res => {this.client = res;console.log(res)},
+      err => console.log(err)
+    );
+  }
 }

@@ -8,7 +8,7 @@
                    <select formControlName="idClient" name="delectionner un destinataire" class="form-control" id="select">
                       <!-- <Option value="-1" selected>Choiser Client</Option> -->
                        <Option value="" disabled selected>Choiser votlere client</Option>
-                       <Option value="2">Client 2</Option>
+                       <Option *ngFor="let item of client" value="{{ item.id }}">{{ item.firstname }} {{ item.lastname }}</Option>
                    </select>
                </div>
            </div>
