@@ -18,20 +18,19 @@ export class SupplierService {
 
 
   addSupplier(item): Observable<any>{
-   return this.http.post(this.baseUrl + '/Supplier/add', item,{responseType:"json"});
+   return this.http.post(this.baseUrl + '/Supplier/add', item,{responseType:"text",observe:"body"});
   }
 
 
   deleteSupplier(id): Observable<any>{
-   return this.http.delete(this.baseUrl + '/Supplier/' + id , {responseType:"json"});
+   return this.http.delete(this.baseUrl + '/Supplier/' + id , {responseType:"text",observe:"body"});
   }
 
 
   getBySupplierId(id): Observable<Supplier>{
-      return this.http.get<Supplier>(this.baseUrl + '/Supplier/' + id);
+      return this.http.get<Supplier>(this.baseUrl + '/Supplier/' + id,{responseType:"json"});
   }
-
   updateSupplier(item): Observable<any>{
-    return this.http.put(this.baseUrl + '/Supplier/update', item);
+    return this.http.put(this.baseUrl + '/Supplier/update', item,{responseType:"text",observe:"body"});
    }
 }

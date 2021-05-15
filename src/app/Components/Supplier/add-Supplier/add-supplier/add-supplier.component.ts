@@ -10,6 +10,8 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
 export class AddSupplierComponent implements OnInit {
   form:FormGroup;
   errorMessage:string="";
+  isAdedd:boolean=false;
+  ErrorMessage:string
 
   constructor(private fb : FormBuilder,private supplierService:SupplierService) { }
   ngOnInit(): void {
@@ -44,8 +46,19 @@ export class AddSupplierComponent implements OnInit {
         return;
       }
   this.supplierService.addSupplier(this.form.value).subscribe(data=>{
-    console.log(data)
+    this.ConfirmationMessage();
+    this.form.reset();
+    this.ErrorMessage = "fournisseur ajouter avec ssucce"
+
+  },error=>{
+    this.ConfirmationMessage();
+    this.ErrorMessage = "problem dans l'ajoute de fournisseur"
   })
+  }
+  ConfirmationMessage(){
+    this.isAdedd =true;
+    setTimeout(()=>{this.isAdedd =false;},3000)
+    
   }
 
 }

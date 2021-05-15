@@ -1,6 +1,9 @@
 <div class=".add-continer">
     <section class="get-in-touch">
         <h3 class="title">Modifier Fournisseur </h3>
+        <div *ngIf="isAdedd" class="alert alert-success" role="alert ">
+            {{ErrorMessage}}
+        </div>
         <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">
             {{errorMessage}}
         </div>

@@ -14,7 +14,6 @@ export class ListCategoryComponent implements OnInit {
   myForm: FormGroup;
 
   constructor(private categoryService: CategoryService, private fb: FormBuilder) { }
-
   ngOnInit(): void {
     this.fetchData();
     this.createForm();

@@ -17,7 +17,6 @@ export class ListProductComponent implements OnInit {
   constructor(private router:Router , private ProductService:ProductService) { }
   ngOnInit(): void {
     this.getAllProcut();
-  
   }
 
   getAllProcut(){
@@ -28,12 +27,8 @@ export class ListProductComponent implements OnInit {
 
   delete(idProduct:number){
     this.ProductService.deleteProduct(idProduct).subscribe(data=>{
-      console.log(data)
-    //    const id = this.listProduct.findIndex(x=>x.id===idProduct)
-    // this.listProduct.splice(id,1)
+     this.getAllProcut();
     })
-   
-   
   }
   update(idProduct:number){
     this.router.navigate(["/home/product/edit/"+idProduct])

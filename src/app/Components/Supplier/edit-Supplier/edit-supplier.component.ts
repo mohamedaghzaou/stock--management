@@ -10,12 +10,21 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
 })
 
 export class EditSupplierComponent implements OnInit {
-  supplier:Supplier= new Supplier();
-  constructor(private fb : FormBuilder,private route:Router,
+    constructor(private fb : FormBuilder,private route:Router,
     private activeRoute:ActivatedRoute, private supplierService:SupplierService) { }
+  supplier:Supplier= new Supplier();
+  isAdedd : boolean=false;
+  ErrorMessage:string;
   form:FormGroup;
   errorMessage:string="";
+  id :number;
   ngOnInit(): void {
+    this.buildForm();
+    this.id = + this.activeRoute.snapshot.paramMap.get("id");
+  
+    this.getsupplier(this.id);
+  }
+  buildForm(){
      this.form= this.fb.group({
       firstname : ['',[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
       lastname : ['',[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
@@ -23,11 +32,6 @@ export class EditSupplierComponent implements OnInit {
       phone : ['',[Validators.pattern('^[0-9]{10}$'),Validators.required]],
       address: ['',Validators.required],
     })
-    let id = + this.activeRoute.snapshot.paramMap.get("id");
-    console.log(id)
-    this.supplier.id = id;
-    
-    this.getsupplier(id);
   }
   updatesupplier(){
       this.errorMessage = "";
@@ -50,23 +54,31 @@ export class EditSupplierComponent implements OnInit {
       this.errorMessage += " est invalid";
       return;
     }
-      this.form.addControl("id",new FormControl(this.supplier.id))
-    console.log(this.form.value)
-    this.supplierService.updateSupplier(this.form.value).subscribe(data=>{
-      this.form.patchValue(data)
+    let  supplier;
+    supplier = {id :this.supplier.id,...this.form.value}
+    this.supplierService.updateSupplier(supplier).subscribe(data=>{
+      this.form.patchValue(data);
  })
   }
 
   getsupplier(id:number){
     this.supplierService.getBySupplierId(id).subscribe(data=>{
          this.form.patchValue(data)
-         console.log(id);
+         this.ConfirmationMessage()
+         this.ErrorMessage="fournisseur modifier avec ssucces"
+    },error=>{
+      this.ConfirmationMessage()
+      this.ErrorMessage="Problem dans la modification";
     })
       
   }
   cancel(){
     this.route.navigate(["/home/suppliers/"])
-
+  }
+  ConfirmationMessage(){
+    this.isAdedd =true;
+    setTimeout(()=>{this.isAdedd =false;},3000)
+    
   }
 
 }

@@ -23,7 +23,7 @@ export class EmployeeService {
 
 
   deleteIEmployee(id): Observable<any>{
-   return this.http.delete(this.baseUrl + '/Employee/' + id , {responseType:"json"});
+   return this.http.delete(this.baseUrl + '/Employee/' + id , {responseType:"text",observe:"body"});
   }
 
 
