@@ -35,6 +35,19 @@ const routes: Routes = [
     {path: 'supplier', component: AddSupplierComponent},
     {path: 'product', component: AddProductComponent},
     {path: 'order/details/:id', component: DetailOrderComponent},
+    //product routings
+    {path: 'products', component: ListProductComponent},
+    {path: 'product/add', component: AddProductComponent},
+    {path: 'product/edit/:id', component: EditProductComponent},
+    //supllier routing
+    {path: 'suppliers', component:ListSupplierComponent },
+    {path: 'supplier/add', component: AddSupplierComponent},
+    {path: 'supplier/edit/:id', component: EditSupplierComponent},
+    //employee
+    {path: 'employee', component:ListEmployeeComponent },
+
+
+
   ]}
 ];
 
