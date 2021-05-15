@@ -1,46 +1,37 @@
+import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Supplier } from 'src/app/Shared/Models/Supplier.model';
+import { SupplierService } from 'src/app/Shared/services/supplier.service';
 @Component({
   selector: 'app-list-supplier',
   templateUrl: './list-supplier.component.html',
-  styleUrls: ['./list-supplier.component.css']
+  styleUrls: ['./list-supplier.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ListSupplierComponent implements OnInit {
-
-  listSupplier : Supplier[]=[
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'183884845ccccccccccc8458',address:"aijdjkdk"},{id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
-    {id:1,firstname:"nnn",lastname:"vvkkk",email:"vavva",phone:'1838848458458',address:"aijdjkdk"},
+  listSupplier:Supplier[]=[]
+  p:number;
   
-  
-  ];
-  constructor(private route:Router) { }
+  constructor(private route:Router,private supplierService:SupplierService ) { }
   ngOnInit(): void {
     this.getAllSupplier();
   }
   getAllSupplier(){
- //getting Supplier logic
+        this.supplierService.getSuppliers().subscribe(data=>{
+          this.listSupplier = data
+          console.log(data)
+        })   
   }
   update(idProduct:number){
- //update selected Supplier logic
-
-
-
+ this.route.navigate(["/home/supplier/edit/"+idProduct])
   }
   Delete(id:number){
- //delete selected Supplier logic
-
+    this.supplierService.deleteSupplier(id).subscribe(data=>{
+      this.getAllSupplier();
+    })   
+  }
+  pagechangeHandler(evnet : number){
+    this.p=evnet;
   }
 }

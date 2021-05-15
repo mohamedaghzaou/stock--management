@@ -12,7 +12,7 @@
                 <small class="text-danger" *ngIf="form.get('password').invalid && form.get('password').touched && form.get('password').value!==''"> Entre 8 Character </small>
             </div>
             <div class="col">
-                <select class="form-control">
+                <select formControlName="role" class="form-control">
                   <option >admin</option>
                   <option>secretaire</option>                
                 </select>

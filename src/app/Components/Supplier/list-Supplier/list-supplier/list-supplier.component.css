@@ -32,3 +32,14 @@ p {
 .list-header input {
     width: 30%;
 }
+
+.ngx-pagination {
+    padding-left: 0px !important;
+    text-align: center;
+}
+
+.ngx-pagination .current,
+.btn-info {
+    background: rgb(172, 25, 173) !important;
+    border-radius: 20px !important;
+}

@@ -10,10 +10,6 @@ export class CategoryService {
   url = ' http://localhost:8098';
 
   constructor(private http: HttpClient) { }
-
-
-
-
   getItems(): Observable<any>{
     return this.http.get<any>(this.url + '/category');
   }
