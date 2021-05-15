@@ -32,6 +32,8 @@ const routes: Routes = [
     {path: 'category', component: ListCategoryComponent},
     {path: 'order/add', component: AddOrderComponent},
     {path: 'order', component: ListOrderComponent},
+    {path: 'supplier', component: AddSupplierComponent},
+    {path: 'product', component: AddProductComponent},
     {path: 'order/details/:id', component: DetailOrderComponent},
   ]}
 ];
