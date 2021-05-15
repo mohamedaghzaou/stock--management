@@ -17,7 +17,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let product of listProduct" class="alert" role="alert">
+                            <tr *ngFor="let product of listProduct | paginate: { itemsPerPage: 8, 
+                                currentPage: p,totalItems: listProduct.length }" class="alert" role="alert">
                                 <td>
                                     <img class="img" [src]="product.image" [alt]="product.name">
                                 </td>
@@ -43,3 +44,4 @@
         </div>
     </div>
 </section>
+<pagination-controls directionLinks=" true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

@@ -1,3 +1,4 @@
+import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/Shared/Models/Employee.model';
@@ -6,13 +7,15 @@ import { EmployeeService } from 'src/app/Shared/services/employee.service';
 @Component({
   selector: 'app-list-employee',
   templateUrl: './list-employee.component.html',
-  styleUrls: ['./list-employee.component.css']
+  styleUrls: ['./list-employee.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ListEmployeeComponent implements OnInit {
   mode:string ="Add" ;
   listEmployee : Employee[]
   form:FormGroup
   employeeEdit : Employee = new Employee();
+  p:number
   constructor(private fb : FormBuilder,private Employeeservice:EmployeeService) { }
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -66,4 +69,7 @@ export class ListEmployeeComponent implements OnInit {
         this.mode= "Add"
      }
    }
+   pagechangeHandler(evnet : number){
+    this.p=evnet;
+  }
 }
