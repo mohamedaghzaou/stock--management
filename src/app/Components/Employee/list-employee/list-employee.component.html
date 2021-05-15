@@ -3,23 +3,23 @@
         <div class="form-row">
             <div class="col">
                 <input type="text" class="form-control" placeholder="Nom" formControlName="name">
-                <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligqtoire  </small>
+                <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligatoire  </small>
                 <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
             </div>
             <div class="col">
-                <input type="password" class="form-control" placeholder="Password" formControlName="password">
-                <small class="text-danger" *ngIf="form.get('password').errors?.required && form.get('password').touched">Cette champ est obligqtoire  </small>
+                <input type="password" class="form-control" placeholder="Mot de Pass" formControlName="password">
+                <small class="text-danger" *ngIf="form.get('password').errors?.required && form.get('password').touched">Cette champ est obligatoire  </small>
                 <small class="text-danger" *ngIf="form.get('password').invalid && form.get('password').touched && form.get('password').value!==''"> Entre 8 Character </small>
             </div>
-            <div class="form-group col-md-4">
-                <select id="inputState" class="form-control">
+            <div class="col">
+                <select formControlName="role" class="form-control">
                   <option >admin</option>
                   <option>secretaire</option>                
                 </select>
             </div>
             <div class="col">
                 <input type="submit" class="btn btn-dark" [disabled]="!form.valid" [value]="mode">
-                <input type="submit" class="btn btn-default" value="Vide" (click)="vide()" *ngIf="form.valid">
+                <input type="reset" class="btn btn-default" value="Vide" (click)="vide()" *ngIf="form.valid">
             </div>
         </div>
     </form>
@@ -36,12 +36,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let employee of listEmployee; let i = index" style="cursor: pointer;" (click)="fill(i)">
+        <tr *ngFor="let employee of listEmployee |paginate: { itemsPerPage: 8, 
+            currentPage: p,totalItems: listEmployee.length }; let i = index" style="cursor: pointer;" (dblclick)="fill(i)">
             <th scope="row">{{i+1}}</th>
-            <td>{{employee.name}}</td>
+            <td>{{employee.name | titlecase}}</td>
             <td>{{employee.password}}</td>
             <td>{{employee.role}}</td>
-            <td> <span><i class="fa fa-close" style="cursor: pointer;" (click)="x" ></i></span></td>
+            <td> <span><i class="fa fa-close" style="cursor: pointer;" (click)="delete(employee.id)" ></i></span></td>
         </tr>
     </tbody>
 </table>
+<pagination-controls directionLinks=" true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

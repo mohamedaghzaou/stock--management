@@ -1,37 +1,44 @@
+import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Shared/Models/Products.model';
+import { ProductService } from 'src/app/Shared/services/product.service';
 
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.css']
+  styleUrls: ['./list-product.component.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ListProductComponent implements OnInit {
   listProduct: Product[]=[]
-  constructor() { }
+  p: number;
+  constructor(private router:Router , private ProductService:ProductService) { }
   ngOnInit(): void {
     this.getAllProcut();
-    this.listProduct = [
-
-      {id:1,name:"product",description:"lkkkkkkkbbbbbbbbbbbbbb",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-      {id:1,name:"product",description:"lkkkkkkk",price:888,image:"llll",quantityStock:11,category:{id:1,name:"C3"}},
-    ]
+  
   }
 
   getAllProcut(){
-
+     this.ProductService.getProducts().subscribe(data=>{
+       this.listProduct = data
+     })
   }
 
-  delete(id:number){
-
+  delete(idProduct:number){
+    this.ProductService.deleteProduct(idProduct).subscribe(data=>{
+      console.log(data)
+    //    const id = this.listProduct.findIndex(x=>x.id===idProduct)
+    // this.listProduct.splice(id,1)
+    })
+   
+   
   }
-  update(id:number){
+  update(idProduct:number){
+    this.router.navigate(["/home/product/edit/"+idProduct])
   }
-
+  pagechangeHandler(evnet : number){
+    this.p=evnet;
+  }
 }

@@ -21,6 +21,9 @@
         "@angular/router": "~11.2.13",
         "bootstrap": "^5.0.0",
         "jquery": "^3.6.0",
+        "ngx-order-pipe": "^2.1.1",
+        "ngx-pagination": "^5.1.0",
+        "pdfmake": "^0.1.71",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.3"

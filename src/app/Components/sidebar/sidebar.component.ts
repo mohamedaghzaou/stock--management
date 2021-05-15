@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  tabActive=1;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  switch(id){
+    this.tabActive=id;
   }
 
 }

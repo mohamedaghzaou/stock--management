@@ -16,6 +16,14 @@ import { EditCustomerComponent } from './Components/Customer/edit-customer/edit-
 import { ListCategoryComponent } from './Components/Category/list-category/list-category.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { LoginComponent } from './Components/login/login.component';
+import { ListOrderComponent } from './Components/order/list-order/list-order.component';
+import { DetailOrderComponent } from './Components/order/detail-order/detail-order.component';
+import { AddOrderComponent } from './Components/order/add-order/add-order.component';
+import { LigneComponent } from './Components/order/ligne/ligne.component';
+import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -33,12 +41,19 @@ import { LoginComponent } from './Components/login/login.component';
     ListCategoryComponent,
     SidebarComponent,
     LoginComponent,
+    ListOrderComponent,
+    DetailOrderComponent,
+    AddOrderComponent,
+    LigneComponent,
+    CustOrderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

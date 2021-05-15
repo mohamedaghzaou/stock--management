@@ -1,3 +1,12 @@
+<div class="list-header">
+    <input type="text" placeholder="Entre Nom" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <div>
+        <button class="btn btn-primary text-capitalize" [routerLink]="['/home/supplier/add']" style="margin-right: 1.7vw;">Ajouter un fournisseur</button>
+    </div>
+</div>
+
+
+
 <table class="table table-hover">
     <thead class="">
         <tr>
@@ -5,8 +14,7 @@
                 Nom complete
             </th>
             <th>
-                E-Mail
-            </th>
+                E-Mail </th>
             <th>
                 Address
             </th>
@@ -25,7 +33,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let supplier of listSupplier">
+        <tr *ngFor="let supplier of listSupplier | paginate: { itemsPerPage: 8, 
+            currentPage: p,totalItems: listSupplier.length }">
             <td>
                 {{supplier.firstname | uppercase }}{{ " " + supplier.lastname }}
             </td>
@@ -39,15 +48,15 @@
                 {{supplier.phone}}
             </td>
             <td>
-                {{supplier.createDate}}
+                {{supplier.createDate | date:'MM-dd-yyy'}}
             </td>
             <td>
-                <button class="btn btn-danger" (click)="Delete(supplier.id)">supprimer</button>
+                <i (click)="Delete(supplier.id)" class=" fa fa-trash fa-lg  text-danger" aria-hidden="true" style="cursor: pointer;" aria-hidden="true "></i>
             </td>
             <td>
-                <button class="btn btn-success" (click)="update(supplier.id)">modifier</button>
+                <i (click)="update(supplier.id)" class=" fa fa-pencil fa-lg text-success " style="cursor: pointer; " aria-hidden="true "></i>
             </td>
         </tr>
-
     </tbody>
 </table>
+<pagination-controls directionLinks="true" previousLabel="" nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

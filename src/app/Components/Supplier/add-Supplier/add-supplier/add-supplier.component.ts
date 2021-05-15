@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SupplierService } from 'src/app/Shared/services/supplier.service';
 
 @Component({
   selector: 'app-add-supplier',
@@ -9,7 +10,8 @@ import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddSupplierComponent implements OnInit {
   form:FormGroup;
   errorMessage:string="";
-  constructor(private fb : FormBuilder) { }
+
+  constructor(private fb : FormBuilder,private supplierService:SupplierService) { }
   ngOnInit(): void {
     
     this.form= this.fb.group({
@@ -39,7 +41,11 @@ export class AddSupplierComponent implements OnInit {
           this.errorMessage += "address, ";
         }
         this.errorMessage += " Est invalid";
+        return;
       }
+  this.supplierService.addSupplier(this.form.value).subscribe(data=>{
+    console.log(data)
+  })
   }
 
 }

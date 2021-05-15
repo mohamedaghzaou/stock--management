@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from 'src/app/Shared/Models/Supplier.model';
+import { SupplierService } from 'src/app/Shared/services/supplier.service';
 @Component({
   selector: 'app-edit-supplier',
   templateUrl: './edit-supplier.component.html',
@@ -9,20 +10,23 @@ import { Supplier } from 'src/app/Shared/Models/Supplier.model';
 })
 
 export class EditSupplierComponent implements OnInit {
-  supplier:Supplier;
-  constructor(private fb : FormBuilder,private activeRoute:ActivatedRoute) { }
+  supplier:Supplier= new Supplier();
+  constructor(private fb : FormBuilder,private route:Router,
+    private activeRoute:ActivatedRoute, private supplierService:SupplierService) { }
   form:FormGroup;
   errorMessage:string="";
   ngOnInit(): void {
      this.form= this.fb.group({
-      firstname : [this.supplier.firstname,[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
-      lastname : [this.supplier.lastname,[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
-      email : [this.supplier.email,[Validators.email,Validators.required]],
-      phone : [this.supplier.phone,[Validators.pattern('^[0-9]{10}$'),Validators.required]],
-      address: [this.supplier.phone,Validators.required],
+      firstname : ['',[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
+      lastname : ['',[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
+      email : ['',[Validators.email,Validators.required]],
+      phone : ['',[Validators.pattern('^[0-9]{10}$'),Validators.required]],
+      address: ['',Validators.required],
     })
-    let id = +this.activeRoute.snapshot.queryParams['id'];
+    let id = + this.activeRoute.snapshot.paramMap.get("id");
+    console.log(id)
     this.supplier.id = id;
+    
     this.getsupplier(id);
   }
   updatesupplier(){
@@ -44,13 +48,25 @@ export class EditSupplierComponent implements OnInit {
         this.errorMessage += "address, ";
       }
       this.errorMessage += " est invalid";
+      return;
     }
+      this.form.addControl("id",new FormControl(this.supplier.id))
+    console.log(this.form.value)
+    this.supplierService.updateSupplier(this.form.value).subscribe(data=>{
+      this.form.patchValue(data)
+ })
   }
 
   getsupplier(id:number){
-      //this.form.patchValue()
+    this.supplierService.getBySupplierId(id).subscribe(data=>{
+         this.form.patchValue(data)
+         console.log(id);
+    })
+      
   }
-  cancle(){
+  cancel(){
+    this.route.navigate(["/home/suppliers/"])
+
   }
 
 }

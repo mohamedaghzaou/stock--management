@@ -6,11 +6,11 @@
 
 .get-in-touch .title {
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 3.2em;
-    line-height: 48px;
-    padding-bottom: 48px;
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    font-size: 1.5em;
+    line-height: 30px;
+    padding-bottom: 15px;
     color: black;
     background: black;
     -webkit-background-clip: text !important;
@@ -19,7 +19,7 @@
 
 .contact-form .form-field {
     position: relative;
-    margin: 32px 0;
+    margin: 20px 0;
 }
 
 .contact-form .input-text {
@@ -45,8 +45,8 @@
 
 .contact-form .label {
     position: absolute;
-    left: 20px;
-    bottom: 11px;
+    left: 15px;
+    bottom: 15px;
     font-size: 18px;
     line-height: 26px;
     font-weight: 400;
@@ -59,7 +59,7 @@
 
 .contact-form .submit-btn {
     display: inline-block;
-    background-color: #000;
+    background-color: var(--main-bg-color);
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -74,6 +74,11 @@
     color: rgb(83, 81, 81);
     text-decoration: underline;
     display: block;
-    text-align: center;
+    text-align: left;
     margin-left: 1rem;
+}
+
+.add-container {
+    width: 60%;
+    margin: auto;
 }

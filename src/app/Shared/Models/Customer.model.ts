@@ -6,4 +6,5 @@ export class Customer {
 	  phone : String;
 	  address : String;
 	  createDate? :Date ;
+	  city: string;
 }
