@@ -23,6 +23,7 @@ import { LigneComponent } from './Components/order/ligne/ligne.component';
 import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddOrderComponent,
     LigneComponent,
     CustOrderComponent,
+    SupplierDetailsComponent
   ],
   imports: [
     BrowserModule,

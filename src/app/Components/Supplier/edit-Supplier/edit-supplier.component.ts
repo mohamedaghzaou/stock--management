@@ -57,18 +57,18 @@ export class EditSupplierComponent implements OnInit {
     let  supplier;
     supplier = {id :this.supplier.id,...this.form.value}
     this.supplierService.updateSupplier(supplier).subscribe(data=>{
-      this.form.patchValue(data);
+     
+      this.ConfirmationMessage()
+      this.ErrorMessage="fournisseur modifier avec ssucces"
+ },error=>{
+  this.ConfirmationMessage()
+  this.ErrorMessage="Problem dans la modification";
  })
   }
 
   getsupplier(id:number){
-    this.supplierService.getBySupplierId(id).subscribe(data=>{
-         this.form.patchValue(data)
-         this.ConfirmationMessage()
-         this.ErrorMessage="fournisseur modifier avec ssucces"
-    },error=>{
-      this.ConfirmationMessage()
-      this.ErrorMessage="Problem dans la modification";
+    this.supplierService.getBySupplierId(id).subscribe(data=>{ 
+       this.form.patchValue(data)
     })
       
   }

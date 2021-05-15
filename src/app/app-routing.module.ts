@@ -18,6 +18,7 @@ import { ListSupplierComponent } from './Components/Supplier/list-Supplier/list-
 import { EditSupplierComponent } from './Components/Supplier/edit-supplier/edit-supplier.component';
 import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
 import { ListOrderComponent } from './Components/order/list-order/list-order.component';
+import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -39,6 +40,8 @@ const routes: Routes = [
     {path: 'product/edit/:id', component: EditProductComponent},
     //supllier routing
     {path: 'suppliers', component:ListSupplierComponent },
+    {path: 'supplier-details/:id', component:SupplierDetailsComponent},
+
     {path: 'supplier/add', component: AddSupplierComponent},
     {path: 'supplier/edit/:id', component: EditSupplierComponent},
     //employee
