@@ -7,8 +7,8 @@
                         <label for="">Produits</label>
                         <select formControlName="idProduct" name="delectionner un destinataire" class="form-control">
                             <Option value="" disabled selected>Choiser le produit</Option>
-                            <Option value="2">Produits 2</Option>
-                            <Option value="4">Produits 1</Option>
+                            
+                            <Option *ngFor="let item of products" value="{{ item.id }}">{{ item.name }}</Option>
                         </select>
                     </div>
                     <div class="ml-2 row">
@@ -18,8 +18,8 @@
                             <input type="number" formControlName="quantity" (change)="change()" name="" class="form-control" placeholder="00" />
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="">Prix</label>
-                            <input type="number"formControlName="prix" (change)="change()" name="" class="form-control" placeholder="00" />
+                            <label for="">prixht</label>
+                            <input type="number"formControlName="prixht" (change)="change()" name="" class="form-control" placeholder="00" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="">TVA</label>

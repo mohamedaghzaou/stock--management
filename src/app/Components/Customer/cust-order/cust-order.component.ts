@@ -1,6 +1,6 @@
 import { Order } from './../../../Shared/Models/Order.model';
 import { CustomerService } from './../../../Shared/services/customer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,6 +13,7 @@ export class CustOrderComponent implements OnInit {
   id;
   p: number = 1;
   constructor(private route: ActivatedRoute,
+                private router: Router,
               private customerService: CustomerService) { }
 
   ngOnInit(): void {
@@ -33,7 +34,15 @@ export class CustOrderComponent implements OnInit {
     )
   }
 
+
+  orderDetails(id){
+    this.router.navigateByUrl('/home/order/details/'+id);
+  }
   
+  factureAdd(){
+    this.router.navigateByUrl('/home/order/add');
+
+  }
 
 
 

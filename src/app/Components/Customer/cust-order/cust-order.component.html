@@ -6,11 +6,15 @@
         </div>
         <div class="col-md-3 mx-5"></div>
         <div class="pull-right col-md-2 ">
-            <a routerLink="add" class=" btn btn-primary ">Nouvelle facture</a>
+            <a  (click)="factureAdd()" class=" btn btn-primary ">Nouvelle facture</a>
 
         </div>
 
     </div>
+
+      <div class="col-md-12 card text-center p-5" *ngIf="data.length<1">
+          <h4>Aucun Order</h4>
+      </div>
 
         <div class="row col-md-12">
             <div class="col-lg-4" *ngFor="let item of data | paginate: { itemsPerPage: 6, currentPage: p }">
@@ -31,7 +35,7 @@
                             </div>
                            
                             <div class="widget-49-meeting-action ">
-                                <a routerLink="details/2" class="btn btn-sm btn-flash-border-primary col-12">View All</a>
+                                <a (click)="orderDetails(item.id)" class="btn btn-sm btn-flash-border-primary col-12">View All</a>
                             </div>
                         </div>
                     </div>

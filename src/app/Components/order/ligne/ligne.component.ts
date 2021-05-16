@@ -1,3 +1,4 @@
+import { ProductService } from './../../../Shared/services/product.service';
 import { OrderService } from './../../../Shared/services/order.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
@@ -13,17 +14,22 @@ export class LigneComponent implements OnInit {
   id:String;
    
   myForm: FormGroup;
+  products = [];
 
-  constructor(private fb: FormBuilder,private orderService: OrderService) { }
+  constructor(private fb: FormBuilder,
+            private orderService: OrderService,
+            private productService: ProductService
+            ) { }
 
   ngOnInit(): void {
    this.createForm();
+   this.getProducts();
   }
 
   createForm(): any{
     this.myForm = this.fb.group({
       quantity: ['', [Validators.required]],
-      prix : ['', [Validators.required]],
+      prixht : ['', [Validators.required]],
       tva : [20, [Validators.required]],
       reduction : ['', [Validators.email,Validators.required]],
       totalHT : ['', [Validators.required]],
@@ -48,11 +54,24 @@ export class LigneComponent implements OnInit {
  
 
   change(): any{
-    var tHt = this.myForm.get('quantity').value*this.myForm.get('prix').value-this.myForm.get('reduction').value; 
+    var tHt = this.myForm.get('quantity').value*this.myForm.get('prixht').value-this.myForm.get('reduction').value; 
     this.myForm.get("totalHT").setValue(tHt);
     var tttc = (this.myForm.get('totalHT').value*(this.myForm.get('tva').value/100))+this.myForm.get('totalHT').value
     this.myForm.get("totalTTC").setValue(tttc);
     this.  valide();
   }
+
+  getProducts(){
+    this.productService.getProducts().subscribe(
+      res => {
+        console.log(res);
+        this.products = res;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
 
 }
