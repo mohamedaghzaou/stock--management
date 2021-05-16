@@ -29,3 +29,12 @@ thead {
     background: rgb(172, 25, 173) !important;
     border-radius: 20px !important;
 }
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-header input {
+    width: 35%;
+}

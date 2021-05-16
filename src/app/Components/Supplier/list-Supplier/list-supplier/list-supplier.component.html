@@ -59,7 +59,7 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls *ngIf="filter.length===0" directionLinks="true" previousLabel="" nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<pagination-controls *ngIf="filter.length===0 || listSupplier.length===0" directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
 <p *ngIf="filter.length===0">
     Nombre De(s) Fournisseur : {{listSupplier.length}}
 </p>

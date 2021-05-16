@@ -14,3 +14,9 @@ textarea {
     border: 1px rgb(221, 221, 221) solid;
     padding: 1rem;
 }
+
+.imageContainer {
+    height: 160px;
+    margin: auto;
+    background-color: black;
+}

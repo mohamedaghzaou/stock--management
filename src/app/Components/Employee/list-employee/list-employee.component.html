@@ -23,7 +23,13 @@
             </div>
         </div>
     </form>
-
+    <hr>
+    <div class="list-header">
+        <input type="text" placeholder="Filtre Par Nom" [(ngModel)]="filter" #filterValue class="form-control">
+        <p *ngIf="filter.length===0">
+            Nombre De(s) Employee : {{listEmployee.length}}
+        </p>
+    </div>
 </div>
 <table class="table">
     <thead class="thead-dark">
@@ -36,7 +42,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let employee of listEmployee |paginate: { itemsPerPage: 8, 
+        <tr *ngFor="let employee of listEmployee |filter :'name':filter |paginate: { itemsPerPage: 6, 
             currentPage: p,totalItems: listEmployee?.length }; let i = index" style="cursor: pointer;" (dblclick)="fill(i)">
             <th scope="row">{{i+1}}</th>
             <td>{{employee.name | titlecase}}</td>
@@ -46,4 +52,4 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls directionLinks=" true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<pagination-controls *ngIf="filter.length===0" directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

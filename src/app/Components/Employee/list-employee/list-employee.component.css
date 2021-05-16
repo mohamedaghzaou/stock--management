@@ -3,7 +3,7 @@ tbody tr:nth-child(2n) {
 }
 
 table thead tr th {
-    background-color: var(--main-bg-color);
+    background-color: rgb(172, 25, 173) !important;
 }
 
 .container {
@@ -30,4 +30,21 @@ select {
 .btn-info {
     background: rgb(172, 25, 173) !important;
     border-radius: 20px !important;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.list-header input {
+    width: 35%;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    height: 100%;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
 }

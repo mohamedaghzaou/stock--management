@@ -3,7 +3,7 @@
     <div class="container contact-form">
         <form [formGroup]="form" (ngSubmit)="addProduct()">
             <h3 class="text-center" style="margin-bottom: 2rem;">Ajouter Un Produit</h3>
-            <div *ngIf="isAdedd" class=" alert alert-success " role="alert ">
+            <div *ngIf="isSbmitted" [ngClass]="{'alert alert-success':isAdedd,'alert alert-danger':!isAdedd}" role="alert ">
                 {{ErrorMessage}}
             </div>
             <div class="row ">
@@ -13,26 +13,36 @@
                         <small class="text-danger " *ngIf="form.get( 'name').errors?.required && form.get( 'name').touched ">Cette champ est obligatoire</small>
                         <small class="text-danger " *ngIf="form.get( 'name').invalid && form.get( 'name').touched && form.get( 'name').value!=='' ">Value est invalid</small>
                     </div>
-                    <div class="form-group ">
-                        <input type="text " name="price" class="form-control " placeholder="Prix " formControlName="price" />
-                        <small class="text-danger " *ngIf="form.get( 'price').errors?.required && form.get( 'price').touched ">Cette champ est obligatoire </small>
-                        <small class="text-danger " *ngIf="form.get( 'price').invalid && form.get( 'price').touched && form.get( 'price').value!=='' ">Value est invalid</small>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input type="text " name="price" class="form-control " placeholder="Prix " formControlName="price" />
+                            <small class="text-danger " *ngIf="form.get( 'price').errors?.required && form.get( 'price').touched ">Cette champ est obligatoire </small>
+                            <small class="text-danger " *ngIf="form.get( 'price').invalid && form.get( 'price').touched && form.get( 'price').value!=='' ">Value est invalid</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number" name="quantityStock " class="form-control " placeholder="Qunatite en stock" formControlName="quantityStock" />
+                            <small class="text-danger " *ngIf="form.get( 'quantityStock').errors?.required && form.get( 'quantityStock').touched ">Cette champ est obligatoire</small>
+                            <small class="text-danger " *ngIf="form.get( 'quantityStock').invalid && form.get( 'quantityStock').touched && form.get( 'quantityStock').value!=='' ">Value est invalid</small>
+                        </div>
                     </div>
-                    <div class="form-group ">
-                        <input type="number" name="quantityStock " class="form-control " placeholder="Qunatite en stock" formControlName="quantityStock" />
-                        <small class="text-danger " *ngIf="form.get( 'quantityStock').errors?.required && form.get( 'quantityStock').touched ">Cette champ est obligatoire</small>
-                        <small class="text-danger " *ngIf="form.get( 'quantityStock').invalid && form.get( 'quantityStock').touched && form.get( 'quantityStock').value!=='' ">Value est invalid</small>
-                    </div>
-
                     <div class="form-group ">
                         <select name="category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="category">
                         <option *ngFor="let c of listCategory " [ngValue]="c.id ">{{c.name}}</option>
                       </select>
                     </div>
+                    <div class="form-group ">
+                        <select name="supplier" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="supplier">
+                        <option *ngFor="let s of listSupplier " [ngValue]="s.id ">{{s.firstname + " " + s.firstname}}</option>
+                      </select>
+                    </div>
                 </div>
                 <div class="col-md-6 ">
                     <div class="form-group ">
-                        <textarea name="description" class="form-control " rows="9 " placeholder="Description " formControlName="description"></textarea>
+                        <textarea name="description" class="form-control " rows="7" placeholder="Description " formControlName="description"></textarea>
+                    </div>
+                    <div>
+                        <label for="exampleFormControlFile1">Choisi Un image</label>
+                        <input type="file" class="form-control-file" (change)="uploadImage($event)">
                     </div>
                 </div>
                 <div>

@@ -13,7 +13,8 @@ import { EmployeeService } from 'src/app/Shared/services/employee.service';
 export class ListEmployeeComponent implements OnInit {
   mode:string ="Ajouter" ;
   listEmployee : Employee[]
-  form:FormGroup
+  form:FormGroup;
+  filter:string =""
   employeeEdit : Employee = new Employee();
   p:number
   constructor(private fb : FormBuilder,private Employeeservice:EmployeeService) { }
@@ -21,10 +22,8 @@ export class ListEmployeeComponent implements OnInit {
     this.form = this.fb.group({
       name : ['',[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
       password : ['',[Validators.minLength(8),Validators.required]],
-      role :['']
+      role :[1]
     })
-
-    
    this.getAllEmployee();
    }
    getAllEmployee(){
@@ -53,7 +52,6 @@ export class ListEmployeeComponent implements OnInit {
     }else{  
       this.mode= "Ajouter"
       this.employeeEdit = {...this.employeeEdit,...this.form.value}
-      console.log( this.employeeEdit)
       this.Employeeservice.updateEmployee(this.employeeEdit).subscribe(data=>{
       this.getAllEmployee();
    })

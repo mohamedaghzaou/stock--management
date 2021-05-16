@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/Shared/Models/Category.model';
+import { Supplier } from 'src/app/Shared/Models/Supplier.model';
+import { CategoryService } from 'src/app/Shared/services/category.service';
 import { ProductService } from 'src/app/Shared/services/product.service';
+import { SupplierService } from 'src/app/Shared/services/supplier.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -11,46 +14,74 @@ import { ProductService } from 'src/app/Shared/services/product.service';
 export class AddProductComponent implements OnInit {
   form:FormGroup;
   listCategory : Category[]=[]
-  isAdedd:boolean=false;
+  listSupplier : Supplier[]=[]
+  isSbmitted:boolean=false;
+  isAdedd:boolean;
   ErrorMessage :string;
-  constructor(private fb : FormBuilder,private ProductService:ProductService,private router:Router) { }
+  ProudctImage :File;
+  constructor(private fb : FormBuilder,
+    private ProductService:ProductService,
+    private router:Router,
+    private categoryService : CategoryService,
+    private supplierService : SupplierService
+    ) { }
 
   ngOnInit(): void {
    this.buildForm();
+   this.getCategories();
+   this.getSuppliers();
   }
-  buildForm(){
-     this.form= this.fb.group({
-      name : ['',[Validators.required]],
-      price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
-      quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
-      description : [''],
-      category : [''],
+
+  getCategories(){
+   this.categoryService.getItems().subscribe(data=>{
+    this.listCategory = data
+   })
+  }
+  getSuppliers(){
+    this.supplierService.getSuppliers().subscribe(data=>{
+     this.listSupplier = data
     })
-    //dumy data
-    this.listCategory= [{id:1,name:"C1"},
-    {id:1,name:"C1"},
-    {id:19,name:"C17"},
-    {id:1,name:"C1"},
-    {id:1,name:"C1"}]
-  }
+   }
 
   //handle adding a new operation
   addProduct(){ 
     //prepare product for backend
+   let fromdata :FormData= new FormData();
    let product = this.form.value
-   product.category = {id:this.form.controls["category"].value,name:""}
-   this.ProductService.addProduct(product).subscribe(data=>{
-       this.ConfirmationMessage();
-       this.form.reset();
-       this.ErrorMessage = "Produit ajouté avec succès"
-  },error=>{
-    this.ConfirmationMessage();
-    this.ErrorMessage = "Il ya un problem dans l'ajouter"
-  })
+    delete product.supplier
+    product.category = {id:this.form.controls["category"].value,name:""}
+    fromdata.append("Supplier",this.form.controls["supplier"].value)
+    fromdata.append("Product",product)
+    fromdata.append("ProudctImage",this.ProudctImage)
+    console.log(fromdata)
+  //  this.ProductService.addProduct(product).subscribe(data=>{
+  //      this.ConfirmationMessage();
+  //      this.form.reset();
+  //      this.isAdedd=true;
+  //      this.ErrorMessage = "Produit ajouté avec succès"
+  // },error=>{
+  //   this.ConfirmationMessage();
+  //   this.ErrorMessage = "Il ya un problem dans l'ajouter"
+        //this.isAdedd=false
+  // })
   }
   ConfirmationMessage(){
-    this.isAdedd =true;
-    setTimeout(()=>{this.isAdedd =false;},3000)
+    this.isSbmitted =true;
+    setTimeout(()=>{this.isSbmitted =false;},3000)
     
   }
+  uploadImage(event){
+    this.ProudctImage =event.target.files[0]
+  }
+  buildForm(){
+    this.form= this.fb.group({
+     name : ['',[Validators.required]],
+     price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
+     quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
+     description : [''],
+     category : ['',[Validators.required]],
+     supplier : ['',[Validators.required]],
+   })
+ }
+
 }

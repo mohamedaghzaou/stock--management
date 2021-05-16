@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/Shared/Models/Category.model';
+import { Supplier } from 'src/app/Shared/Models/Supplier.model';
+import { CategoryService } from 'src/app/Shared/services/category.service';
 import { ProductService } from 'src/app/Shared/services/product.service';
+import { SupplierService } from 'src/app/Shared/services/supplier.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -15,53 +18,75 @@ export class EditProductComponent implements OnInit {
   id :number;
   isAdedd: boolean=false;
   ErrorMessage:string
+  ProudctImage: File=null;
+  listSupplier : Supplier[]=[]
+  isSbmitted:boolean=false;
   constructor(private fb:FormBuilder,private activeRoute:ActivatedRoute,
     private router:Router ,
-    private ProductService:ProductService) { }
+    private ProductService:ProductService,
+    private categoryService : CategoryService,
+    private supplierService : SupplierService
+    ) { }
 
   ngOnInit(): void {
-     this.id = +this.activeRoute.snapshot.paramMap.get("id")
-    this.getProduct(this.id)    
-    this.form= this.fb.group({
-      name : ['',[Validators.required]],
-      price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
-      quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
-      description : [''],
-      category : [''],
-    })
-    this.listCategory= [{id:1,name:"C1"},
-    {id:19,name:"C777"},
-    {id:5,name:"C"},
-    {id:3,name:"C3"},
-    {id:7,name:"C4"}]
+    this.getCategories();
+    this.id = +this.activeRoute.snapshot.paramMap.get("id")
+    this.getProduct(this.id) 
+    this.buildForm();
    
   }
+
+
   getProduct(id:number){
     this.ProductService.getByProductId(id).subscribe(data=>{
      this.form.patchValue(data);
      this.form.controls["category"].setValue(data.category.id)
     })
   }
+  getCategories(){
+    this.categoryService.getItems().subscribe(data=>{
+     this.listCategory = data
+    })
+   }
+  
   updateProduct(){
-
+    let fromdata :FormData= new FormData();
+   
     let product = this.form.value
-    product.id=this.id;
-   product.category = {id:this.form.controls["category"].value,name:""}
-   this.ProductService.updateProduct(product).subscribe(data=>{
-    this. ConfirmationMessage();
-    this.ErrorMessage="produit modifier avec ssucces"
-   },error=>{
-    this. ConfirmationMessage();
-    this.ErrorMessage="un problem dans  modification"
-   })
+     product.id=this.id;
+     product.category = {id:this.form.controls["category"].value,name:""}
+     fromdata.append("Product",product)
+     fromdata.append("ProudctImage",this.ProudctImage)
+     console.log(product)
+  //  this.ProductService.updateProduct(product).subscribe(data=>{
+  //   this. ConfirmationMessage();
+      // this.isAdedd =true;
+  //   this.ErrorMessage="produit modifier avec ssucces"
+  //  },error=>{
+  //   this. ConfirmationMessage();
+  //this.isAdedd =false;
+  //   this.ErrorMessage="un problem dans  modification"
+  //  })
   }
-  cancel(){
-      this.router.navigate(["/home/products"])
-  }
-  ConfirmationMessage(){
-    this.isAdedd =true;
-    setTimeout(()=>{this.isAdedd =false;},3000)
-  }
+      cancel(){
+          this.router.navigate(["/home/products"])
+      }
+      ConfirmationMessage(){
+        this.isSbmitted =true;
+        setTimeout(()=>{this.isSbmitted =false;},3000)
+      }
+      uploadImage(event){
+        this.ProudctImage =event.target.files[0]
+      }
+      buildForm(){
+        this.form= this.fb.group({
+         name : ['',[Validators.required]],
+         price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
+         quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
+         description : [''],
+         category : ['',[Validators.required]],
+       })
+     }
 
   }
 

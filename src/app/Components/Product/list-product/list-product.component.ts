@@ -12,8 +12,9 @@ import { ProductService } from 'src/app/Shared/services/product.service';
 
 })
 export class ListProductComponent implements OnInit {
-  listProduct: Product[]=[]
+  listProduct: Product[]=[];
   p: number;
+  filter:string = "";
   constructor(private router:Router , private ProductService:ProductService) { }
   ngOnInit(): void {
     this.getAllProcut();
