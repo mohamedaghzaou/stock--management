@@ -26,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
 import { FilterPipe } from './Shared/pipes/filter.pipe';
 import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
+import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
     CustOrderComponent,
     SupplierDetailsComponent,
     FilterPipe,
-    EllipsisPipe
+    EllipsisPipe,
+    ProdutDetailsComponent
   ],
   imports: [
     BrowserModule,
