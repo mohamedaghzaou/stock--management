@@ -14,7 +14,6 @@
 
         <div class="row col-md-12">
             <div class="col-lg-4" *ngFor="let item of data | paginate: { itemsPerPage: 6, currentPage: p }">
-
                 <div class="card card-margin">
                     <div class="card-header no-border">
                         <span class="card-title"> {{ item.customer.firstname }} {{ item.customer.lastname }}</span>
