@@ -48,15 +48,12 @@ export class ListEmployeeComponent implements OnInit {
       this.mode= "Add"
           this.Employeeservice.addEmployee(this.form.value).subscribe(data=>{
             this.getAllEmployee();
-
       })
       this.vide();
     }else{  
       this.mode= "Add"
-      this.employeeEdit.name =this.form.controls["name"].value;
-      this.employeeEdit.password =this.form.controls["password"].value;
-      this.employeeEdit.role =this.form.controls["role"].value;
-      console.log(this.employeeEdit)
+      this.employeeEdit = {...this.employeeEdit,...this.form.value}
+      console.log( this.employeeEdit)
       this.Employeeservice.updateEmployee(this.employeeEdit).subscribe(data=>{
       this.getAllEmployee();
    })

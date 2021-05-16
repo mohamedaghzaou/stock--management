@@ -2,6 +2,9 @@
     <div class="container contact-form">
         <form [formGroup]="form" (ngSubmit)="updateProduct()">
             <h3 class="text-center">Modifier Un Produit</h3>
+            <div *ngIf="isAdedd" class=" alert alert-success " role="alert ">
+                {{ErrorMessage}}
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -10,7 +13,7 @@
                         <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
                     </div>
                     <div class="form-group ">
-                        <input type="text" name="Prix" class="form-control " placeholder="Prix" formControlName="price" />
+                        <input type="text" name="price" class="form-control " placeholder="Prix" formControlName="price" />
                         <small class="text-danger" *ngIf="form.get('price').errors?.required && form.get('price').touched">Cette champ est obligqtoire </small>
                         <small class="text-danger" *ngIf="form.get('price').invalid && form.get('price').touched && form.get('price').value!==''">Value est invalid</small>
                     </div>
@@ -20,7 +23,7 @@
                         <small class="text-danger" *ngIf="form.get('quantityStock').invalid && form.get('quantityStock').touched && form.get('quantityStock').value!==''">Value est invalid</small>
                     </div>
                     <div class="form-group">
-                        <select name="Category" [(ngModel)]="product.id" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" formControlName="Category">
+                        <select name="category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" formControlName="category">
                         <option *ngFor="let c of listCategory" [ngValue]="c.id">{{c.name}}</option>
                       </select>
                     </div>
@@ -31,8 +34,8 @@
                     </div>
                 </div>
                 <div>
-                    <input type="submit" class="btn btn-success text-capitalize" value="Modifier " style="cursor: pointer;background-color:  rgb(173, 5, 173);border: none;">
-                    <input type="button" class="btn btn-default text-capitalize" value="Annuller " style="cursor: pointer;margin-left: 0.8rem; background-color:  white;border: none; " (click)="cancel()">
+                    <input type="submit" [disabled]="!form.valid" class="btn btn-success text-capitalize" value="Modifier " style="cursor: pointer;background-color:  rgb(173, 5, 173);border: none;">
+                    <input type="button" class="btn btn-default text-capitalize" value="Annuller " style="cursor: pointer;margin-left: 1rem " (click)="cancel()">
                 </div>
             </div>
         </form>

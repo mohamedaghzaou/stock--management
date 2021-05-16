@@ -34,4 +34,8 @@ export class ListSupplierComponent implements OnInit {
   pagechangeHandler(evnet : number){
     this.p=evnet;
   }
+  details(idProduct : number){
+    this.route.navigate(["/home/supplier-details/"+idProduct])
+
+  }
 }

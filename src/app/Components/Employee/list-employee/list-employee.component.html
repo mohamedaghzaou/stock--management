@@ -37,7 +37,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let employee of listEmployee |paginate: { itemsPerPage: 8, 
-            currentPage: p,totalItems: listEmployee.length }; let i = index" style="cursor: pointer;" (dblclick)="fill(i)">
+            currentPage: p,totalItems: listEmployee?.length }; let i = index" style="cursor: pointer;" (dblclick)="fill(i)">
             <th scope="row">{{i+1}}</th>
             <td>{{employee.name | titlecase}}</td>
             <td>{{employee.password}}</td>

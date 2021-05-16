@@ -51,6 +51,9 @@
                 {{supplier.createDate | date:'MM-dd-yyy'}}
             </td>
             <td>
+                <i (click)="details(supplier.id)" class="fa fa-ellipsis-h fa-lg" aria-hidden="true" style="cursor: pointer;" aria-hidden="true "></i>
+            </td>
+            <td>
                 <i (click)="Delete(supplier.id)" class=" fa fa-trash fa-lg  text-danger" aria-hidden="true" style="cursor: pointer;" aria-hidden="true "></i>
             </td>
             <td>
