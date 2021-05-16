@@ -12,6 +12,7 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
 export class ListSupplierComponent implements OnInit {
   listSupplier:Supplier[]=[]
   p:number;
+  filter:string="";
   
   constructor(private route:Router,private supplierService:SupplierService ) { }
   ngOnInit(): void {

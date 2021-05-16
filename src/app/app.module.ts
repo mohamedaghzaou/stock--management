@@ -24,6 +24,8 @@ import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
+import { FilterPipe } from './Shared/pipes/filter.pipe';
+import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { SupplierDetailsComponent } from './Components/Supplier/supplier-details
     AddOrderComponent,
     LigneComponent,
     CustOrderComponent,
-    SupplierDetailsComponent
+    SupplierDetailsComponent,
+    FilterPipe,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,

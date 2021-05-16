@@ -13,8 +13,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
   switch(id){
     this.tabActive=id;
   }

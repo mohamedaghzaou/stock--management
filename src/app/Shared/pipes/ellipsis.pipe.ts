@@ -1,0 +1,15 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'ellipsis'
+})
+export class EllipsisPipe implements PipeTransform {
+
+  transform(value: string ,numberOfChar:number): unknown {
+    if(value.length<numberOfChar){
+      return value
+    }
+    return value.substring(0,numberOfChar)+ "..."
+  }
+
+}

@@ -35,7 +35,7 @@ const routes: Routes = [
     {path: 'order', component: ListOrderComponent},
     {path: 'product', component: AddProductComponent},
     {path: 'order/details/:id', component: DetailOrderComponent},
-    //product routings
+    //product routing
     {path: 'products', component: ListProductComponent},
     {path: 'product/add', component: AddProductComponent},
     {path: 'product/edit/:id', component: EditProductComponent},

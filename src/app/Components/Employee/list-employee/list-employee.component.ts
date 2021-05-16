@@ -11,7 +11,7 @@ import { EmployeeService } from 'src/app/Shared/services/employee.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ListEmployeeComponent implements OnInit {
-  mode:string ="Add" ;
+  mode:string ="Ajouter" ;
   listEmployee : Employee[]
   form:FormGroup
   employeeEdit : Employee = new Employee();
@@ -39,19 +39,19 @@ export class ListEmployeeComponent implements OnInit {
    }
    fill(id:number){
    this.form.patchValue(this.listEmployee[id]);
-   this.mode= "Edit"
+   this.mode= "Modifier"
    this.employeeEdit.id = this.listEmployee[id].id;
 
    }
    addEmployee(){
-    if(this.mode==="Add"){
-      this.mode= "Add"
+    if(this.mode==="Ajouter"){
+      this.mode= "Ajouter"
           this.Employeeservice.addEmployee(this.form.value).subscribe(data=>{
             this.getAllEmployee();
       })
       this.vide();
     }else{  
-      this.mode= "Add"
+      this.mode= "Ajouter"
       this.employeeEdit = {...this.employeeEdit,...this.form.value}
       console.log( this.employeeEdit)
       this.Employeeservice.updateEmployee(this.employeeEdit).subscribe(data=>{
@@ -62,8 +62,8 @@ export class ListEmployeeComponent implements OnInit {
    }
    vide(){
      this.form.reset();
-     if(this.mode="Edit"){
-        this.mode= "Add"
+     if(this.mode="Modifier"){
+        this.mode= "Ajouter"
      }
    }
    pagechangeHandler(evnet : number){

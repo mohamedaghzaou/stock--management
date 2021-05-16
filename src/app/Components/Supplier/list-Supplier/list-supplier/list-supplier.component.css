@@ -30,7 +30,7 @@ p {
 }
 
 .list-header input {
-    width: 30%;
+    width: 35%;
 }
 
 .ngx-pagination {
@@ -42,4 +42,8 @@ p {
 .btn-info {
     background: rgb(172, 25, 173) !important;
     border-radius: 20px !important;
+}
+
+.hader {
+    display: flex;
 }

@@ -1,13 +1,10 @@
 <div class="list-header">
-    <input type="text" placeholder="Entre Nom" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <input type="text" placeholder="Filtre Par Nom" [(ngModel)]="filter" #filterValue class="form-control">
     <div>
-        <button class="btn btn-primary text-capitalize" [routerLink]="['/home/supplier/add']" style="margin-right: 1.7vw;">Ajouter un fournisseur</button>
+        <button class="btn btn-primary text-capitalize" [routerLink]="['/home/supplier/add']" style="margin-right: 1vw;">Ajouter un fournisseur</button>
     </div>
 </div>
-
-
-
-<table class="table table-hover">
+<table style="background-color: #fff;" class="table table-hover">
     <thead class="">
         <tr>
             <th>
@@ -25,15 +22,15 @@
                 Date de la creation
             </th>
             <th>
-
             </th>
             <th>
-
+            </th>
+            <th>
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let supplier of listSupplier | paginate: { itemsPerPage: 8, 
+        <tr *ngFor="let supplier of (listSupplier | filter : 'firstname': filter) | paginate: { itemsPerPage: 8, 
             currentPage: p,totalItems: listSupplier.length }">
             <td>
                 {{supplier.firstname | uppercase }}{{ " " + supplier.lastname }}
@@ -42,7 +39,7 @@
                 {{supplier.email}}
             </td>
             <td>
-                {{supplier.address}}
+                {{supplier.address |ellipsis:15}}
             </td>
             <td>
                 {{supplier.phone}}
@@ -62,4 +59,7 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls directionLinks="true" previousLabel="" nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<pagination-controls *ngIf="filter.length===0" directionLinks="true" previousLabel="" nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<p *ngIf="filter.length===0">
+    Nombre De(s) Fournisseur : {{listSupplier.length}}
+</p>
