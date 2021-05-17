@@ -48,4 +48,16 @@ export class ListOrderComponent implements OnInit {
     )
   }
 
+
+  delete(id){
+    this.orderService.deleteOrderById(id).subscribe(
+      res => {
+       this.fetchOrder();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
 }

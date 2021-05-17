@@ -7,11 +7,10 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Injectable({
   providedIn: 'root',
 })
-
 export class PdfMakerService {
   invoice: CartOrder;
   constructor() {}
-
+  // Use In Moment When Facture Craete
   generatePDF(invoices, client) {
     this.invoice = invoices;
     console.log('from pdf service  : ');
@@ -21,12 +20,6 @@ export class PdfMakerService {
 
     let docDefinition = {
       content: [
-        // {
-        //   text: 'ELECTRONIC SHOP',
-        //   fontSize: 16,
-        //   alignment: 'center',
-        //   color: '#047886'
-        // },
         {
           text: 'FACTURE',
           fontSize: 20,
@@ -66,12 +59,12 @@ export class PdfMakerService {
             [
               {
                 margin: [0, 10, 0, 0],
-                text: 'Ressort Boughaz',
+                text: 'Ressorts Boughaz',
                 bold: true,
                 alignment: 'left',
               },
-              { text: 'Franche zone de tetouan N 15', alignment: 'left' },
-              { text: 'RessortBoughaz@gmail', alignment: 'left' },
+              { text: '15, zone indus de Martil TETOUAN MAROC', alignment: 'left' },
+              { text: 'contact@RessortsBoughaz.ma', alignment: 'left' },
             ],
             [
               {
@@ -102,9 +95,13 @@ export class PdfMakerService {
                 { text: 'TVA', style: 'filledHeader' },
                 { text: 'Total HT', style: 'filledHeader' },
               ],
-              ...this.invoice.lignes.map(p => ([
-                p.idProduct, p.prixht,p.quantity,p.tva + '%', p.totalHT
-              ])),
+              ...this.invoice.lignes.map((p) => [
+                p.idProduct,
+                p.prixht,
+                p.quantity,
+                p.tva + '%',
+                p.totalHT,
+              ]),
             ],
           },
         },
@@ -119,16 +116,165 @@ export class PdfMakerService {
             ],
             [
               {
-                text: this.invoice.lignes
-                  .reduce((sum, p) => sum + p.totalHT, 0)
-                  .toFixed(2) + 'DH',
+                text:
+                  this.invoice.lignes
+                    .reduce((sum, p) => sum + p.totalHT, 0)
+                    .toFixed(2) + 'DH',
                 style: 'totalstyle2',
               },
 
               {
-                text: this.invoice.lignes
-                  .reduce((sum, p) => sum + p.totalTTC, 0)
-                  .toFixed(2) + 'DH',
+                text:
+                  this.invoice.lignes
+                    .reduce((sum, p) => sum + p.totalTTC, 0)
+                    .toFixed(2) + 'DH',
+                style: 'totalstyle2',
+              },
+            ],
+          ],
+        },
+      ],
+      styles: {
+        filledHeader: {
+          bold: true,
+          fontSize: 14,
+          color: 'white',
+          fillColor: '#AAAAAA',
+          alignment: 'center',
+        },
+        sectionHeader: {
+          bold: true,
+          decoration: 'underline',
+          fontSize: 14,
+          margin: [0, 15, 0, 15],
+        },
+        totalstyle: {
+          bold: true,
+          fontSize: 14,
+          color: 'black',
+          alignment: 'right',
+        },
+        totalstyle2: {
+          bold: true,
+          fontSize: 14,
+          color: 'gray',
+          alignment: 'right',
+        },
+      },
+    };
+
+    pdfMake.createPdf(docDefinition).open();
+  }
+
+  // Use In orderDetails component
+  generateOrderpdf(order) {
+    console.log('from pdf service  : ');
+    console.log(order);
+
+    let docDefinition = {
+      content: [
+        {
+          text: 'FACTURE',
+          fontSize: 20,
+          bottom: 20,
+          bold: true,
+          alignment: 'left',
+          decoration: 'underline',
+          color: 'skyblue',
+        },
+        {
+          margin: [0, 0, 0, 30],
+          text: new Date().toDateString(),
+          fontSize: 10,
+          bottom: 20,
+          alignment: 'left',
+          color: 'gray',
+        },
+        {
+          columns: [
+            {
+              text: 'Émetteur',
+              bold: true,
+              alignment: 'left',
+              decoration: 'underline',
+            },
+            {
+              text: 'Destinataire',
+              bold: true,
+              alignment: 'right',
+              decoration: 'underline',
+            },
+          ],
+        },
+        {
+          margin: [0, 0, 0, 30],
+          columns: [
+            [
+              {
+                margin: [0, 10, 0, 0],
+                text: 'Ressorts Boughaz',
+                bold: true,
+                alignment: 'left',
+              },
+              { text: '15, zone indus de Martil TETOUAN MAROC', alignment: 'left' },
+              { text: 'contact@RessortsBoughaz.ma', alignment: 'left' },
+            ],
+            [
+              {
+                margin: [0, 10, 0, 0],
+                text: order.customer.firstname,
+                bold: true,
+                alignment: 'right',
+              },
+              { text: order.customer.address, alignment: 'right' },
+              { text: order.customer.email, alignment: 'right' },
+              { text: order.customer.phone, alignment: 'right' },
+            ],
+          ],
+        },
+        {
+          text: 'Détail',
+          style: 'sectionHeader',
+        },
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*', '*', '*', '*'],
+            body: [
+              [
+                { text: 'Produit', style: 'filledHeader' },
+                { text: 'Prix unitaire HT', style: 'filledHeader' },
+                { text: 'Quantite', style: 'filledHeader' },
+                { text: 'TVA', style: 'filledHeader' },
+                { text: 'Total HT', style: 'filledHeader' },
+              ],
+              ...order.orderProducts.map((p) => [
+                p.product.name,
+                p.prix_ht,
+                p.quantity,
+                p.tva + '%',
+                p.totalHT,
+              ]),
+            ],
+          },
+        },
+
+        {
+          margin: [0, 20, 0, 0],
+          columns: [
+            [
+              { text: 'Total HT', style: 'totalstyle' },
+
+              { text: 'Total TTC', style: 'totalstyle' },
+            ],
+            [
+              {
+                text: order.totalht + 'DH',
+                style: 'totalstyle2',
+              },
+
+              {
+                text: order.total + 'DH',
                 style: 'totalstyle2',
               },
             ],

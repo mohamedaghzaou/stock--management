@@ -1,3 +1,4 @@
+import { Order } from './../Models/Order.model';
 import { PdfMakerService } from './pdf-maker.service';
 import { CustomerService } from './customer.service';
 import { Customer } from './../Models/Customer.model';
@@ -50,9 +51,8 @@ export class OrderService {
       .pipe(map((res) => {}));
   }
 
-
-  getDetailsOrder(id):Observable<any>{
-    return this.http.get<any>(this.url+'/order/'+id);
+  getDetailsOrder(id): Observable<Order> {
+    return this.http.get<Order>(this.url + '/order/' + id);
   }
 
   valideLigne(item, id): any {
@@ -65,6 +65,10 @@ export class OrderService {
     this.cartOrder.lignes[i].idProduct = item.idProduct;
     this.cartOrder.lignes[i].totalHT = item.totalHT;
     this.cartOrder.lignes[i].totalTTC = item.totalTTC;
+  }
+
+  deleteOrderById(id): Observable<any> {
+    return this.http.delete(this.url + '/order/' + id);
   }
 
   // Scan Function
@@ -81,7 +85,7 @@ export class OrderService {
   }
 
   // random Id
-  uuidv4() {
+  uuidv4(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
       /[xy]/g,
       function (c) {
