@@ -1,7 +1,7 @@
 <div class="list-header">
     <input type="text" placeholder="Filtre Par Nom" [(ngModel)]="filter" #filterValue class="form-control">
     <div>
-        <button class="btn btn-primary text-capitalize" [routerLink]="['/home/supplier/add']" style="margin-right: 1vw;">Ajouter un fournisseur</button>
+        <button class="btn btn-primary text-capitalize" [routerLink]="['add']" style="margin-right: 1vw;">Ajouter un fournisseur</button>
     </div>
 </div>
 <table style="background-color: #fff;" class="table table-hover">
@@ -48,13 +48,13 @@
                 {{supplier.createDate | date:'MM-dd-yyy'}}
             </td>
             <td>
-                <i (click)="details(supplier.id)" class="fa fa-ellipsis-h fa-lg" aria-hidden="true" style="cursor: pointer;" aria-hidden="true "></i>
+                <i [routerLink]="['supplier-details',supplier.id]" class="fa fa-ellipsis-h fa-lg" aria-hidden="true" style="cursor: pointer;" aria-hidden="true "></i>
             </td>
             <td>
                 <i (click)="Delete(supplier.id)" class=" fa fa-trash fa-lg  text-danger" aria-hidden="true" style="cursor: pointer;" aria-hidden="true "></i>
             </td>
             <td>
-                <i (click)="update(supplier.id)" class=" fa fa-pencil fa-lg text-success " style="cursor: pointer; " aria-hidden="true "></i>
+                <i [routerLink]="['edit',supplier.id]" class=" fa fa-pencil fa-lg text-success " style="cursor: pointer; " aria-hidden="true "></i>
             </td>
         </tr>
     </tbody>

@@ -4,7 +4,7 @@
         <div class="list-header">
             <input type="text" [(ngModel)]="filter" placeholder="Filtre Par Nom " class="form-control ">
             <div>
-                <button class="btn btn-primary text-capitalize " [routerLink]="[ '/home/product/add'] " style="margin-right: 1vw; ">Ajouter un Produit</button>
+                <button class="btn btn-primary text-capitalize " [routerLink]="[ 'add']" style="margin-right: 1vw; ">Ajouter un Produit</button>
             </div>
         </div>
 
@@ -25,6 +25,7 @@
                                 <th>Quantity </th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,10 +42,13 @@
                                 <td class="border-bottom-0 ">{{product.price | number:'.1-3'}} Dhs</td>
                                 <td class="border-bottom-0 ">{{product.quantityStock}}</td>
                                 <td class="border-bottom-0 ">
-                                    <i (click)="delete(product.id) " style="cursor: pointer; " class=" fa fa-trash fa-lg "></i>
+                                    <i (click)="delete(product.id) " style="cursor: pointer;" class=" fa fa-trash fa-lg "></i>
                                 </td>
                                 <td class="border-bottom-0 ">
-                                    <i (click)="update(product.id) " style="cursor: pointer; " class="fa fa-pencil fa-lg "></i>
+                                    <i [routerLink]="[ 'edit',product.id]" style=" cursor: pointer; " class="fa fa-pencil fa-lg "></i>
+                                </td>
+                                <td class="border-bottom-0 ">
+                                    <i style="cursor: pointer; " [routerLink]="[ 'product-details',product.id] " class="fa fa-info " aria-hidden="true "></i>
                                 </td>
                             </tr>
                         </tbody>
@@ -54,4 +58,4 @@
         </div>
     </div>
 </section>
-<pagination-controls *ngIf="filter.length===0 || listProduct.length===0" directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<pagination-controls *ngIf="filter.length===0 || listProduct.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

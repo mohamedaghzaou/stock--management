@@ -4,14 +4,43 @@
         <div class="col-md-6 mt-1">
             <h5>{{product?.name}}</h5>
             <hr>
-            <div class="mt-1 mb-1 spec-1"><span>{{product?.quantityStock}}</span></div>
-            <div class="mt-1 mb-1 spec-1"><span>{{product?.category?.name}}</span></div>
-            <p class="text-justify text-truncate para mb-0">{{product?.description}}<br><br></p>
+            <div class="mt-1 mb-1 spec-3"> <i style="color: rgb(173, 5, 173);" class="fa fa-database"></i><span class="pl-2">{{product?.quantityStock}}</span></div>
+            <div class=" mt-1 mb-1 spec-1 "><i style="color: rgb(173, 5, 173);" class="fa fa-object-group"></i>
+                <span class="pl-1">{{product?.category?.name}}</span>
+            </div>
+            <p class="text-justify text-truncate para mb-0 "><i style="color: rgb(173, 5, 173);" class="fa fa-info" aria-hidden="true"></i> <span class="pl-3">{{product?.description}}</span>
+
+
+                <br><br></p>
         </div>
-        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-            <div class="d-flex flex-row align-items-center">
-                <h4 class="mr-1">{{product?.price}}</h4>
+        <div class="align-items-center align-content-center col-md-3 border-left mt-1 ">
+            <div class="d-flex flex-row align-items-center ">
+                <h4 class="mr-1 "><i style="color: rgb(173, 5, 173);" class="fa fa-money" aria-hidden="true"></i> {{product?.price}} Dhs</h4>
             </div>
         </div>
     </div>
+    <div *ngIf="SupplierList.length===0">
+        <p>Produit avoir aucun Fournisseur
+        </p>
+    </div>
+    <table *ngIf="SupplierList.length!==0 " class="table ">
+        <thead>
+            <tr>
+                <th scope="col ">#Id</th>
+                <th scope="col ">Nom et Prenom</th>
+                <th scope="col ">E-Mail</th>
+                <th scope="col ">Teli</th>
+                <th scope="col ">Address </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Supplier of SupplierList; let i=i ndex ">
+                <th scope="row ">{{Supplier.id}}</th>
+                <td>{{Supplier.firstname + " "+ Supplier.lastname}}</td>
+                <td>{{Supplier.email}}</td>
+                <td>{{Supplier.phone}}</td>
+                <td>{{Supplier.address}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

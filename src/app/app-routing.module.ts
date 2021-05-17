@@ -38,14 +38,14 @@ const routes: Routes = [
     {path: 'order/details/:id', component: DetailOrderComponent},
     //product routing
     {path: 'products', component: ListProductComponent},
-    {path: 'product/add', component: AddProductComponent},
-    {path: 'product/edit/:id', component: EditProductComponent},
-    {path: 'product-details/:id', component:ProdutDetailsComponent},
+    {path: 'products/add', component: AddProductComponent},
+    {path: 'products/edit/:id', component: EditProductComponent},
+    {path: 'products/product-details/:id', component:ProdutDetailsComponent},
     //supllier routing
     {path: 'suppliers', component:ListSupplierComponent },
-    {path: 'supplier-details/:id', component:SupplierDetailsComponent},
-    {path: 'supplier/add', component: AddSupplierComponent},
-    {path: 'supplier/edit/:id', component: EditSupplierComponent},
+    {path: 'suppliers/supplier-details/:id', component:SupplierDetailsComponent},
+    {path: 'suppliers/add', component: AddSupplierComponent},
+    {path: 'suppliers/edit/:id', component: EditSupplierComponent},
     //employee
     {path: 'employee', component:ListEmployeeComponent },
 

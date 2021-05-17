@@ -33,4 +33,7 @@ export class SupplierService {
   updateSupplier(item): Observable<any>{
     return this.http.put(this.baseUrl + '/Supplier/update', item,{responseType:"text",observe:"body"});
    }
+   SuppliersByProudctId(id): Observable<Supplier[]>{
+    return this.http.get<Supplier[]>(this.baseUrl + '/Supplier/product/' + id,{responseType:"json"});
+}
 }

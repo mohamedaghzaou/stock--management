@@ -31,9 +31,6 @@ export class ListProductComponent implements OnInit {
      this.getAllProcut();
     })
   }
-  update(idProduct:number){
-    this.router.navigate(["/home/product/edit/"+idProduct])
-  }
   pagechangeHandler(evnet : number){
     this.p=evnet;
   }
