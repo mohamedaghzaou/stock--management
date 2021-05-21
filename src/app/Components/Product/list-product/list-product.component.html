@@ -1,4 +1,4 @@
-<section class="ftco-section mt-2">
+<section style="background-color: snow;" class="ftco-section mt-2">
 
     <div class="container">
         <div class="list-header">
@@ -13,7 +13,7 @@
         </p>
         <div class="row justify-content-center ">
         </div>
-        <div class="row ">
+        <div class="row">
             <div class="col-md-12 ">
                 <div class="table-wrap ">
                     <table class="table ">
@@ -22,7 +22,7 @@
                                 <th>&nbsp;</th>
                                 <th>Produit</th>
                                 <th>Prix</th>
-                                <th>Quantity </th>
+                                <th>Quantité </th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
@@ -31,7 +31,7 @@
                         <tbody>
                             <tr *ngFor="let product of listProduct |filter :'name':filter | paginate: { itemsPerPage: 6, currentPage: p,totalItems: listProduct.length } " class="alert " role="alert ">
                                 <td>
-                                    <img class="img " [src]="product.image " [alt]="product.name ">
+                                    <img class="img " src="assets\ProductImageDefault\defaultProuctImage.png" [alt]="product.name ">
                                 </td>
                                 <td class="border-bottom-0 ">
                                     <div class="email ">

@@ -20,11 +20,12 @@ import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.
 import { ListOrderComponent } from './Components/order/list-order/list-order.component';
 import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
+import { AuthGuardGuard } from './Shared/helpers/auth-guard.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home',
-  component: SidebarComponent,
+  component: SidebarComponent,canActivate :[AuthGuardGuard],
   children: [
     {path: 'customer', component: ListCustomerComponent},
     {path: 'customer/edit/:id', component: EditCustomerComponent},
@@ -34,7 +35,6 @@ const routes: Routes = [
     {path: 'category', component: ListCategoryComponent},
     {path: 'order/add', component: AddOrderComponent},
     {path: 'order', component: ListOrderComponent},
-    {path: 'product', component: AddProductComponent},
     {path: 'order/details/:id', component: DetailOrderComponent},
     //product routing
     {path: 'products', component: ListProductComponent},

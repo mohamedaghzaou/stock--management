@@ -4,13 +4,13 @@
             <div class="card">
                 <h5 class="card-header text-center strong">Ajouter Category</h5>
                 <div class="card-body text-center">
-                   <form action="" [formGroup]='myForm'>
-                    <div class="form-group">
-                        <!-- <label for="">category</label> -->
-                        <input type="text" formControlName="name" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-                    </div>
-                    <input type="button" class="btn btn-primary" (click)="add()" value="Valide" [disabled]="!myForm.valid">
-                   </form>
+                    <form action="" [formGroup]='myForm'>
+                        <div class="form-group">
+                            <!-- <label for="">category</label> -->
+                            <input type="text" formControlName="name" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </div>
+                        <input type="button" class="btn btn-primary" (click)="add()" value="Valide" [disabled]="!myForm.valid">
+                    </form>
 
                 </div>
             </div>

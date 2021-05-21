@@ -13,12 +13,12 @@
             </div>
             <div class="col">
                 <select formControlName="role" class="form-control">
-                  <option >admin</option>
+                  <option selected >admin</option>
                   <option>secretaire</option>                
                 </select>
             </div>
             <div class="col">
-                <input type="submit" class="btn btn-dark" [disabled]="!form.valid" [value]="mode">
+                <input type="submit" style="background-color: rgb(172, 25, 173);" class="btn btn-dark" [disabled]="!form.valid" [value]="mode">
                 <input type="reset" class="btn btn-default" value="Vide" (click)="vide()" *ngIf="form.valid">
             </div>
         </div>
@@ -26,8 +26,8 @@
     <hr>
     <div class="list-header">
         <input type="text" placeholder="Filtre Par Nom" [(ngModel)]="filter" #filterValue class="form-control">
-        <p *ngIf="filter.length===0">
-            Nombre De(s) Employee : {{listEmployee.length}}
+        <p *ngIf="filter?.length===0">
+            Nombre De(s) Employee : {{listEmployee?.length}}
         </p>
     </div>
 </div>
@@ -52,4 +52,4 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls *ngIf="filter.length===0" directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<pagination-controls *ngIf="filter?.length===0" directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

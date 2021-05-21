@@ -25,15 +25,25 @@
                             <small class="text-danger " *ngIf="form.get( 'quantityStock').invalid && form.get( 'quantityStock').touched && form.get( 'quantityStock').value!=='' ">Value est invalid</small>
                         </div>
                     </div>
-                    <div class="form-group ">
-                        <select name="category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="category">
+                    <div class="row" style="padding: 0;">
+                        <div class="form-group col-md-10" style="padding-right: 0;">
+                            <select name="category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="category">
                         <option *ngFor="let c of listCategory " [ngValue]="c.id ">{{c.name}}</option>
                       </select>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 1rem;cursor: pointer;">
+                            <i (click)="addCategory=true" class="fa fa-plus fa-2x"></i>
+                        </div>
                     </div>
-                    <div class="form-group ">
-                        <select name="supplier" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="supplier">
-                        <option *ngFor="let s of listSupplier " [ngValue]="s.id ">{{s.firstname + " " + s.firstname}}</option>
-                      </select>
+                    <div class="row" style="padding: 0;">
+                        <div class="form-group col-md-10" style="padding-right: 0;">
+                            <select name="supplier" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="supplier">
+                            <option *ngFor="let s of listSupplier " [ngValue]="s.id ">{{s.firstname + " " + s.firstname}}</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 1rem;cursor: pointer;">
+                            <i (click)="addSupplier=true" class="fa fa-plus fa-2x"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 ">
@@ -52,5 +62,31 @@
                 <a routerLink="/home/products" class="link-info  text-capitalize" style="color: rgb(172, 25, 173); margin-top: 1rem">Reteunir a la List</a>
             </div>
         </form>
+    </div>
+</div>
+<div class="modal" *ngIf="addCategory">
+    <div class="modal-content">
+        <div class=" text-right">
+            <i (click)="addCategory=false" style="cursor: pointer; " class="fa fa-times-circle fa-2x"></i></div>
+        <div>
+            <h5 class=" card-header text-center strong ">Ajouter Category</h5>
+            <div class="card-body text-center ">
+                <form action=" " [formGroup]='myForm'>
+                    <div class="form-group">
+                        <input type=" text " formControlName="name" class="form-control " id="formGroupExampleInput " placeholder="Example input ">
+                    </div>
+                    <input type="button" class="btn btn-primary" (click)="add()" value="Valide " [disabled]="!myForm.valid ">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal m-supplier" *ngIf="addSupplier">
+    <div class="modal-content model-supplier">
+        <div class=" text-right">
+            <i (click)="addSupplier=false" style="cursor: pointer; " class="fa fa-times-circle fa-2x"></i></div>
+        <div>
+            <app-add-supplier (emitteSupplierAdd)="refreshSupplier($event)"></app-add-supplier>
+        </div>
     </div>
 </div>

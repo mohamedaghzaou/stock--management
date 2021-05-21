@@ -13,7 +13,7 @@ export class EmployeeService {
 
 
   getIEmployees(): Observable<Employee[]>{
-    return this.http.get<Employee[]>(this.baseUrl + '//Employees/list')
+    return this.http.get<Employee[]>(this.baseUrl + '/Employees/list')
   }
 
 
@@ -32,7 +32,7 @@ export class EmployeeService {
   }
 
   updateEmployee(item): Observable<any>{
-    return this.http.put(this.baseUrl + '/Employee/update', item);
+    return this.http.put(this.baseUrl + '/Employee/update', item,{responseType:"text",observe:"body"});
    }
 
 

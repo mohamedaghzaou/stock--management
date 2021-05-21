@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupplierService } from 'src/app/Shared/services/supplier.service';
 
@@ -11,7 +11,8 @@ export class AddSupplierComponent implements OnInit {
   form:FormGroup;
   errorMessage:string="";
   isAdedd:boolean=false;
-  ErrorMessage:string
+  ErrorMessage:string;
+ @Output() emitteSupplierAdd : EventEmitter<String> = new  EventEmitter<String>()
 
   constructor(private fb : FormBuilder,private supplierService:SupplierService) { }
   ngOnInit(): void {
@@ -48,7 +49,9 @@ export class AddSupplierComponent implements OnInit {
   this.supplierService.addSupplier(this.form.value).subscribe(data=>{
     this.ConfirmationMessage();
     this.form.reset();
-    this.ErrorMessage = "fournisseur ajouter avec ssucce"
+    this.ErrorMessage = "fournisseur ajouter avec ssucce";
+    this.emitteSupplierAdd.emit("added")
+    console.log("emitted")
 
   },error=>{
     this.ConfirmationMessage();

@@ -1,0 +1,29 @@
+* {
+    background-color: white;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 50%;
+    margin: auto;
+    padding: 6px;
+    border: 1px solid #f5f6f5;
+}
+
+i {
+    border: 6px solid rgb(172, 25, 173);
+    padding: 10px 20px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+button {
+    display: block;
+    margin: auto;
+}

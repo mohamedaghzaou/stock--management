@@ -22,7 +22,7 @@ export class ListEmployeeComponent implements OnInit {
     this.form = this.fb.group({
       name : ['',[Validators.pattern("^[a-zA-Z]+$"),Validators.required]],
       password : ['',[Validators.minLength(8),Validators.required]],
-      role :[1]
+      role :["admin",[Validators.required]]
     })
    this.getAllEmployee();
    }
@@ -53,8 +53,9 @@ export class ListEmployeeComponent implements OnInit {
       this.mode= "Ajouter"
       this.employeeEdit = {...this.employeeEdit,...this.form.value}
       this.Employeeservice.updateEmployee(this.employeeEdit).subscribe(data=>{
-      this.getAllEmployee();
-   })
+        this.getAllEmployee();
+        console.log("editing")
+      })
       this.vide();
     }
    }

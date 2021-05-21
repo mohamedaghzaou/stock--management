@@ -3,4 +3,5 @@ export class Employee{
 	  name :String ;
 	  password : String;
 	  role? : String;
+	  token? : string;
 }

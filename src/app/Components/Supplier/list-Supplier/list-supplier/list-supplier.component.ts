@@ -21,7 +21,6 @@ export class ListSupplierComponent implements OnInit {
   getAllSupplier(){
         this.supplierService.getSuppliers().subscribe(data=>{
           this.listSupplier = data
-          console.log(data)
         })   
   }
   update(idProduct:number){

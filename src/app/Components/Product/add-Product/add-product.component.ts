@@ -13,12 +13,15 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
 })
 export class AddProductComponent implements OnInit {
   form:FormGroup;
+  myForm:FormGroup;
   listCategory : Category[]=[]
   listSupplier : Supplier[]=[]
   isSbmitted:boolean=false;
   isAdedd:boolean;
   ErrorMessage :string;
   ProudctImage :File;
+  addCategory :boolean=false;
+  addSupplier :boolean=false;
   constructor(private fb : FormBuilder,
     private ProductService:ProductService,
     private router:Router,
@@ -27,9 +30,12 @@ export class AddProductComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-   this.buildForm();
+   
    this.getCategories();
    this.getSuppliers();
+   this.createForm()
+   this.buildForm();
+   this.myForm.reset();
   }
 
   getCategories(){
@@ -42,6 +48,11 @@ export class AddProductComponent implements OnInit {
      this.listSupplier = data
     })
    }
+   createForm() {
+    this.myForm = this.fb.group({
+      name: ['', [Validators.required]]
+    });
+  }
 
   //handle adding a new operation
   addProduct(){ 
@@ -50,20 +61,19 @@ export class AddProductComponent implements OnInit {
    let product = this.form.value
     delete product.supplier
     product.category = {id:this.form.controls["category"].value,name:""}
-    fromdata.append("Supplier",this.form.controls["supplier"].value)
-    fromdata.append("Product",product)
+    fromdata.append("Supplier",JSON.stringify(this.form.controls["supplier"].value))
+    fromdata.append("Product",JSON.stringify( product))
     fromdata.append("ProudctImage",this.ProudctImage)
-    console.log(fromdata)
-  //  this.ProductService.addProduct(product).subscribe(data=>{
-  //      this.ConfirmationMessage();
-  //      this.form.reset();
-  //      this.isAdedd=true;
-  //      this.ErrorMessage = "Produit ajouté avec succès"
-  // },error=>{
-  //   this.ConfirmationMessage();
-  //   this.ErrorMessage = "Il ya un problem dans l'ajouter"
-        //this.isAdedd=false
-  // })
+   this.ProductService.addProduct(fromdata).subscribe(data=>{
+       this.ConfirmationMessage();
+       this.form.reset();
+       this.isAdedd=true;
+       this.ErrorMessage = "Produit ajouté avec succès"
+  },error=>{
+    this.ConfirmationMessage();
+    this.ErrorMessage = "Il ya un problem dans l'ajouter"
+        this.isAdedd=false
+  })
   }
   ConfirmationMessage(){
     this.isSbmitted =true;
@@ -79,9 +89,27 @@ export class AddProductComponent implements OnInit {
      price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
      quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
      description : [''],
-     category : ['',[Validators.required]],
-     supplier : ['',[Validators.required]],
+     category : [0,[Validators.required]],
+     supplier : [0,[Validators.required]],
    })
  }
+
+ add() {
+  this.categoryService.addItem(this.myForm.value).subscribe(
+    res => {
+      this.myForm.reset();
+       this.getCategories();
+    },
+    err => {
+      console.log(err);
+    }
+  );
+}
+
+refreshSupplier(){
+  this.getSuppliers();
+  console.log("recived")
+
+}
 
 }

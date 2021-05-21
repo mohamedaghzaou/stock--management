@@ -21,12 +21,13 @@ import { DetailOrderComponent } from './Components/order/detail-order/detail-ord
 import { AddOrderComponent } from './Components/order/add-order/add-order.component';
 import { LigneComponent } from './Components/order/ligne/ligne.component';
 import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
 import { FilterPipe } from './Shared/pipes/filter.pipe';
 import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
+import { JwtInterceptorInterceptor } from './Shared/helpers/jwt-interceptor.interceptor';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ProdutDetailsComponent } from './Components/Product/produt-details/prod
     HttpClientModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
