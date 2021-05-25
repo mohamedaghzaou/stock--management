@@ -6,8 +6,8 @@
             <h3>Votre facture est prête ?</h3>
             <div class="action ">
                 
-                <button class="btn">envoyer au client</button>
-                <button class="btn" (click)='imprimer()'>Imprimer</button>
+                <button class="btn" (click)="imprimer(true)">envoyer au client</button>
+                <button class="btn" (click)='imprimer(false)'>Imprimer</button>
                 <button class="btn btn-danger pull-right" (click)='fermer()'>Fermer</button>
             </div>
     
