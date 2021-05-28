@@ -1,5 +1,4 @@
 <section style="background-color: snow;" class="ftco-section mt-2">
-
     <div class="container">
         <div class="list-header">
             <input type="text" [(ngModel)]="filter" placeholder="Filtre Par Nom " class="form-control ">
@@ -7,7 +6,6 @@
                 <button class="btn btn-primary text-capitalize " [routerLink]="[ 'add']" style="margin-right: 1vw; ">Ajouter un Produit</button>
             </div>
         </div>
-
         <p style="font-size: .8rem;">
             Nombre des Produit : {{listProduct.length}}
         </p>
@@ -26,12 +24,13 @@
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let product of listProduct |filter :'name':filter | paginate: { itemsPerPage: 6, currentPage: p,totalItems: listProduct.length } " class="alert " role="alert ">
                                 <td>
-                                    <img class="img " src="assets\ProductImageDefault\defaultProuctImage.png" [alt]="product.name ">
+                                    <img class="img " src="assets\ProductImageDefault\defaultProuctImage.png" [alt]="product.name">
                                 </td>
                                 <td class="border-bottom-0 ">
                                     <div class="email ">
@@ -50,6 +49,9 @@
                                 <td class="border-bottom-0 ">
                                     <i style="cursor: pointer; " [routerLink]="[ 'product-details',product.id] " class="fa fa-info " aria-hidden="true "></i>
                                 </td>
+                                <td class="border-bottom-0">
+                                    <i (click)=" SupplyingProduct() " class="fa fa-plus fa-lg" style="cursor: pointer;"></i>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -59,3 +61,30 @@
     </div>
 </section>
 <pagination-controls *ngIf="filter.length===0 || listProduct.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<div class="modal" *ngIf="Supplying">
+    <div class="modal-content">
+        <div class=" text-right">
+            <i (click)="SupplyingProduct()" style="cursor: pointer; " class="fa fa-times-circle fa-2x"></i></div>
+        <div>
+            <h5 class=" card-header text-center strong ">Fournir un Produit</h5>
+            <div class="card-body text-center ">
+                <form action=" " [formGroup]='myForm'>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <input type="text" formControlName="price" class="form-control " id="formGroupExampleInput" placeholder="Quantite">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" formControlName="Quantity" class="form-control " id="formGroupExampleInput " placeholder="Prix">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select name="supplier" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example " formControlName="supplier">
+                        <option *ngFor="let s of listSupplier " [ngValue]="s.id ">{{s.firstname + " " + s.lastname}}</option>
+                      </select>
+                    </div>
+                    <input type="button" class="btn btn-primary " (click)="Supply() " value="Valide " [disabled]="!myForm.valid ">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

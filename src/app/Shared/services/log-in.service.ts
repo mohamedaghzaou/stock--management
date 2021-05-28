@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { cpuUsage } from 'process';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap,map } from 'rxjs/operators';
 import { Employee } from '../Models/Employee.model';
@@ -14,13 +13,10 @@ export class LogInService {
   constructor(private http:HttpClient) { }  
   baseUrl ="http://localhost:8098";
 
-
-
   public get currentEmployee(): Employee {
     return this.EmployeeSubject.value;
 }
   LogIn(logindata): Observable<any>{
-    //this.Employee.next()
     return this.http.post<any>(this.baseUrl + '/login',logindata,{observe : "response"}).pipe(map(data=>{
       const E = new Employee();
       E.name = data.body.username;
@@ -37,8 +33,6 @@ export class LogInService {
   LogOut(){
     localStorage.removeItem('currentUser');
     this.EmployeeSubject.next(null);
-
-    //this.http.
   }
 
 }

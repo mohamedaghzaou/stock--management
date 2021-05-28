@@ -75,9 +75,6 @@ export class EditProductComponent implements OnInit {
         this.isSbmitted =true;
         setTimeout(()=>{this.isSbmitted =false;},3000)
       }
-      uploadImage(event){
-        this.ProudctImage =event.target.files[0]
-      }
       buildForm(){
         this.form= this.fb.group({
          name : ['',[Validators.required]],

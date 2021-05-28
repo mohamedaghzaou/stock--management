@@ -3,7 +3,6 @@ import { PdfMakerService } from './pdf-maker.service';
 import { CustomerService } from './customer.service';
 import { Customer } from './../Models/Customer.model';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './../Models/Products.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

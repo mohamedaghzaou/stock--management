@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
   }
   logIn(){
     const fd = new FormData();
-    fd.append("username",this.loginForm.controls["username"].value )
-    fd.append("password", this.loginForm.controls["password"].value)
+     fd.append("username",this.loginForm.controls["username"].value )
+     fd.append("password", this.loginForm.controls["password"].value)
     this.logInService.LogIn(fd).subscribe(data=>{
       this.ErrorAuth =false
 

@@ -32,7 +32,7 @@ export class ProdutDetailsComponent implements OnInit {
   }
     SuppliersByProudctId(id:number){
       this.supplierService.SuppliersByProudctId(id).subscribe(data=>{
-        this.SupplierList=data
+       this.SupplierList=data
       })
     }
 }

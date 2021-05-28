@@ -1,55 +1,59 @@
-<div class="container form">
-    <form [formGroup]="form" (ngSubmit)="addEmployee()">
-        <div class="form-row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Nom" formControlName="name">
-                <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligatoire  </small>
-                <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
-            </div>
-            <div class="col">
-                <input type="password" class="form-control" placeholder="Mot de Pass" formControlName="password">
-                <small class="text-danger" *ngIf="form.get('password').errors?.required && form.get('password').touched">Cette champ est obligatoire  </small>
-                <small class="text-danger" *ngIf="form.get('password').invalid && form.get('password').touched && form.get('password').value!==''"> Entre 8 Character </small>
-            </div>
-            <div class="col">
-                <select formControlName="role" class="form-control">
-                  <option selected >admin</option>
-                  <option>secretaire</option>                
-                </select>
-            </div>
-            <div class="col">
-                <input type="submit" style="background-color: rgb(172, 25, 173);" class="btn btn-dark" [disabled]="!form.valid" [value]="mode">
-                <input type="reset" class="btn btn-default" value="Vide" (click)="vide()" *ngIf="form.valid">
-            </div>
+<div class="container">
+    <div class="row col-sm-12">
+        <div class="form">
+            <form [formGroup]="form" (ngSubmit)="addEmployee()">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Nom" formControlName="name">
+                        <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligatoire  </small>
+                        <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" placeholder="Mot de Pass" formControlName="password">
+                        <small class="text-danger" *ngIf="form.get('password').errors?.required && form.get('password').touched">Cette champ est obligatoire  </small>
+                        <small class="text-danger" *ngIf="form.get('password').invalid && form.get('password').touched && form.get('password').value!==''"> Entre 8 Character </small>
+                    </div>
+                    <div class="col">
+                        <select formControlName="role" class="form-control">
+                          <option selected >admin</option>
+                          <option>secretaire</option>                
+                        </select>
+                    </div>
+                    <div class="col">
+                        <input type="submit" style="background-color: rgb(172, 25, 173);" class="btn btn-dark" [disabled]="!form.valid" [value]="mode">
+                        <input type="reset" class="btn btn-default" value="Vide" (click)="vide()">
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-    <hr>
-    <div class="list-header">
-        <input type="text" placeholder="Filtre Par Nom" [(ngModel)]="filter" #filterValue class="form-control">
-        <p *ngIf="filter?.length===0">
-            Nombre De(s) Employee : {{listEmployee?.length}}
-        </p>
+
+        <hr>
+        <div class=" list-header ">
+            <input type="text " placeholder="Filtre Par Nom " [(ngModel)]="filter " #filterValue class="form-control ">
+            <p *ngIf="filter?.length===0 ">
+                Nombre De(s) Employee : {{listEmployee?.length}}
+            </p>
+        </div>
     </div>
+    <table class="table col-sm-4 ">
+        <thead class="thead-dark ">
+            <tr>
+                <th scope="col ">#</th>
+                <th scope="col ">Nom</th>
+                <th scope="col "> Mot de Pass</th>
+                <th scope="col ">Role</th>
+                <th scope="col "></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of listEmployee |filter : 'name':filter |paginate: { itemsPerPage: 6, currentPage: p,totalItems: listEmployee?.length }; let i=i ndex " style="cursor: pointer; " (dblclick)="fill(i) ">
+                <th scope="row ">{{i+1}}</th>
+                <td>{{employee.name | titlecase}}</td>
+                <td>{{employee.password}}</td>
+                <td>{{employee.role}}</td>
+                <td> <span><i class="fa fa-close " style="cursor: pointer; " (click)="delete(employee.id) " ></i></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls *ngIf="filter?.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
 </div>
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nom</th>
-            <th scope="col"> Mot de pass</th>
-            <th scope="col">Role</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of listEmployee |filter :'name':filter |paginate: { itemsPerPage: 6, 
-            currentPage: p,totalItems: listEmployee?.length }; let i = index" style="cursor: pointer;" (dblclick)="fill(i)">
-            <th scope="row">{{i+1}}</th>
-            <td>{{employee.name | titlecase}}</td>
-            <td>{{employee.password}}</td>
-            <td>{{employee.role}}</td>
-            <td> <span><i class="fa fa-close" style="cursor: pointer;" (click)="delete(employee.id)" ></i></span></td>
-        </tr>
-    </tbody>
-</table>
-<pagination-controls *ngIf="filter?.length===0" directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>

@@ -22,12 +22,12 @@ export class EmployeeService {
   }
 
 
-  deleteIEmployee(id): Observable<any>{
+  deleteIEmployee(id: number): Observable<any>{
    return this.http.delete(this.baseUrl + '/Employee/' + id , {responseType:"text",observe:"body"});
   }
 
 
-  getByEmployeeId(id): Observable<Employee>{
+  getByEmployeeId(id: number): Observable<Employee>{
       return this.http.get<Employee>(this.baseUrl + '/Employee/' + id);
   }
 

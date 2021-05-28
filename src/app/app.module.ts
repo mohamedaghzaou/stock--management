@@ -64,7 +64,8 @@ import { JwtInterceptorInterceptor } from './Shared/helpers/jwt-interceptor.inte
     HttpClientModule,
     NgxPaginationModule
   ],
-  providers: [        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },
+  providers: [       
+     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

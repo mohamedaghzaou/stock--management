@@ -50,10 +50,6 @@
                     <div class="form-group ">
                         <textarea name="description" class="form-control " rows="7" placeholder="Description " formControlName="description"></textarea>
                     </div>
-                    <div>
-                        <label for="exampleFormControlFile1">Choisi Un image</label>
-                        <input type="file" class="form-control-file" (change)="uploadImage($event)">
-                    </div>
                 </div>
                 <div>
                     <input type="submit" [disabled]="!form.valid" class="btn btn-primary text-capitalize " value="Ajouter " style="cursor: pointer; width: 20%; ">

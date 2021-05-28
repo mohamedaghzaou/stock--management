@@ -2,9 +2,7 @@
     <div class="container contact-form" style="padding-top: 0;">
         <form [formGroup]="form" (ngSubmit)="updateProduct()">
             <h3 class="text-center">Modifier Un Produit</h3>
-            <div class="imageContainer">
-                <img src="" alt="">
-            </div>
+
             <div *ngIf="isSbmitted" [ngClass]="{'alert alert-success':isAdedd,'alert alert-danger':!isAdedd}" role="alert ">
                 {{ErrorMessage}}
             </div>
@@ -41,10 +39,7 @@
                     <div class="form-group ">
                         <textarea name="description" class="form-control" rows="7" placeholder="Description " formControlName="description"></textarea>
                     </div>
-                    <div>
-                        <label for="exampleFormControlFile1">Choisi Un image</label>
-                        <input type="file" class="form-control-file" (change)="uploadImage($event)">
-                    </div>
+
                 </div>
             </div>
         </form>

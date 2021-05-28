@@ -63,7 +63,6 @@ export class AddProductComponent implements OnInit {
     product.category = {id:this.form.controls["category"].value,name:""}
     fromdata.append("Supplier",JSON.stringify(this.form.controls["supplier"].value))
     fromdata.append("Product",JSON.stringify( product))
-    fromdata.append("ProudctImage",this.ProudctImage)
    this.ProductService.addProduct(fromdata).subscribe(data=>{
        this.ConfirmationMessage();
        this.form.reset();
@@ -80,9 +79,7 @@ export class AddProductComponent implements OnInit {
     setTimeout(()=>{this.isSbmitted =false;},3000)
     
   }
-  uploadImage(event){
-    this.ProudctImage =event.target.files[0]
-  }
+
   buildForm(){
     this.form= this.fb.group({
      name : ['',[Validators.required]],

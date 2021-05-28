@@ -1,4 +1,3 @@
-import { Order } from './../Models/Order.model';
 import { Customer } from './../Models/Customer.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

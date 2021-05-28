@@ -14,7 +14,6 @@ import { AddProductComponent } from './Components/Product/add-product/add-produc
 import { EditProductComponent } from './Components/Product/edit-product/edit-product.component';
 import { ListProductComponent } from './Components/Product/list-product/list-product.component';
 import { ListSupplierComponent } from './Components/Supplier/list-Supplier/list-supplier/list-supplier.component';
-// import { AddSupplierComponent } from './Components/Supplier/add-Supplier/add-supplier/add-supplier.component';
 import { EditSupplierComponent } from './Components/Supplier/edit-supplier/edit-supplier.component';
 import { CustOrderComponent } from './Components/Customer/cust-order/cust-order.component';
 import { ListOrderComponent } from './Components/order/list-order/list-order.component';
@@ -47,9 +46,7 @@ const routes: Routes = [
     {path: 'suppliers/add', component: AddSupplierComponent},
     {path: 'suppliers/edit/:id', component: EditSupplierComponent},
     //employee
-    {path: 'employee', component:ListEmployeeComponent },
-
-
+    {path: 'employee', component:ListEmployeeComponent }
 
   ]}
 ];

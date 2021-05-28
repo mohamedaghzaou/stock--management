@@ -21,7 +21,7 @@ export class CategoryService {
 
 
   deleteItem(id): Observable<any>{
-   return this.http.delete(this.url + '/category/' + id);
+   return this.http.delete(this.url + '/category/' + id, {responseType : "text"});
   }
 
 

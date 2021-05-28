@@ -28,18 +28,18 @@
             <tr>
                 <th scope="col ">#Id</th>
                 <th scope="col ">Nom et Prenom</th>
-                <th scope="col ">E-Mail</th>
-                <th scope="col ">Teli</th>
-                <th scope="col ">Address </th>
+                <th scope="col ">Price</th>
+                <th scope="col ">Quantite</th>
+                <th scope="col ">Date operation </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let Supplier of SupplierList; let i=i ndex ">
                 <th scope="row ">{{Supplier.id}}</th>
                 <td>{{Supplier.firstname + " "+ Supplier.lastname}}</td>
-                <td>{{Supplier.email}}</td>
-                <td>{{Supplier.phone}}</td>
-                <td>{{Supplier.address}}</td>
+                <td>{{Supplier.price}}</td>
+                <td>{{Supplier.quantity}}</td>
+                <td>{{Supplier.operation_date | date : "dd-MM-yyyy"}}</td>
             </tr>
         </tbody>
     </table>
