@@ -71,7 +71,7 @@ export class OrderService {
   }
 
   // Scan Function
-  scanPdf() {
+  scanPdf(send) {
     console.log('from ordeer  : ');
     console.log(this.cartOrder.idClient);
 
@@ -79,7 +79,7 @@ export class OrderService {
     this.customerService.getById(this.cartOrder.idClient).subscribe((res) => {
       console.log(res);
       customer = res;
-      this.pdfMakerService.generatePDF(this.cartOrder, customer);
+      this.pdfMakerService.generatePDF(this.cartOrder, customer,send);
     });
   }
 

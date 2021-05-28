@@ -75,7 +75,8 @@ export class AddOrderComponent implements OnInit {
     this.opValide = false;
   }
 
-  imprimer() {
-    this.orderService.scanPdf();
+  imprimer(send) {
+    this.orderService.scanPdf(send);
+    this.opValide=false;
   }
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { CartOrder } from 'src/app/Shared/services/order.service';
 import { Injectable } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -9,9 +10,9 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class PdfMakerService {
   invoice: CartOrder;
-  constructor() {}
+  constructor(private http: HttpClient) {}
   // Use In Moment When Facture Craete
-  generatePDF(invoices, client) {
+  generatePDF(invoices, client,send=false) {
     this.invoice = invoices;
     console.log('from pdf service  : ');
 
@@ -163,7 +164,24 @@ export class PdfMakerService {
       },
     };
 
-    pdfMake.createPdf(docDefinition).open();
+
+    // pdfMake.createPdf(docDefinition).open();
+
+    const pdfDocGenerator = pdfMake.createPdf(docDefinition);
+
+    if(send){
+      pdfDocGenerator.getBase64((data) => {
+        let datos={'data':data};
+        this.sendVieEmail({
+          "to":client.email,
+          "file":data
+        });
+        // this.sendVieEmail(JSON.stringify(datos));
+      })
+    }else{
+      pdfDocGenerator.open();
+    }
+
   }
 
   // Use In orderDetails component
@@ -311,5 +329,17 @@ export class PdfMakerService {
     };
 
     pdfMake.createPdf(docDefinition).open();
+  }
+
+
+
+  sendVieEmail(file){
+
+    // let formData=new FormData();
+    // formData.append('file', file);    
+     return this.http.post(" http://localhost:8098/order/send",file).subscribe(
+       res => console.log(res),
+       err => console.log(err)
+     );
   }
 }
