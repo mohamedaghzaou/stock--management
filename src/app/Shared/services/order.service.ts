@@ -83,6 +83,26 @@ export class OrderService {
     });
   }
 
+
+  getByIdProduct(id){
+    return this.http.get(this.url+"/product/"+id);
+  }
+
+
+  
+  getTotalVentsByMonth(){
+    return this.http.get(this.url+"/order/totalforthismonth");
+  }
+
+  getTotalCustomer(){
+    return this.http.get(this.url+"/customer/totalofcustomers");
+  }
+
+  getTotalSupplier(){
+    return this.http.get(this.url+"/supplier/totalofsupplier");
+  }
+
+
   // random Id
   uuidv4(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
