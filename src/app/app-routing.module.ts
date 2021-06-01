@@ -21,6 +21,7 @@ import { SupplierDetailsComponent } from './Components/Supplier/supplier-details
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
 import { AuthGuardGuard } from './Shared/helpers/auth-guard.guard';
 import { EmployeeGuard } from './Shared/helpers/employee.guard';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -48,6 +49,8 @@ const routes: Routes = [
     {path: 'suppliers/edit/:id', component: EditSupplierComponent},
     //employee
     {path: 'employee', component:ListEmployeeComponent , canActivate:[EmployeeGuard]}
+,
+{path: 'dashboard', component:DashboardComponent , }
 
   ]}
 ];
