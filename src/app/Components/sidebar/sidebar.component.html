@@ -24,7 +24,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item" routerLinkActive="active">
+                <li *ngIf="currentEmployee.role==='admin'" lass="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="employee">
                         <i class="material-icons">content_paste</i>
                         <p>Employé</p>
@@ -70,7 +70,6 @@
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
             </div>
-
         </nav>
         <!-- End Navbar -->
         <div class="content">

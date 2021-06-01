@@ -40,16 +40,16 @@
             <tr>
                 <th scope="col ">#</th>
                 <th scope="col ">Nom</th>
-                <th scope="col "> Mot de Pass</th>
+                <!-- <th scope="col "> Mot de Pass</th> -->
                 <th scope="col ">Role</th>
                 <th scope="col "></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let employee of listEmployee |filter : 'name':filter |paginate: { itemsPerPage: 6, currentPage: p,totalItems: listEmployee?.length }; let i=i ndex " style="cursor: pointer; " (dblclick)="fill(i) ">
+            <tr *ngFor="let employee of listEmployee |filter : 'name':filter |paginate: { itemsPerPage: 6, currentPage: p,totalItems: listEmployee?.length }; let i=index " style="cursor: pointer; " (dblclick)="fill(i) ">
                 <th scope="row ">{{i+1}}</th>
                 <td>{{employee.name | titlecase}}</td>
-                <td>{{employee.password}}</td>
+                <!-- <td>{{employee.password}}</td> -->
                 <td>{{employee.role}}</td>
                 <td> <span><i class="fa fa-close " style="cursor: pointer; " (click)="delete(employee.id) " ></i></span></td>
             </tr>

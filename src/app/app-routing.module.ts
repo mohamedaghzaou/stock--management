@@ -20,6 +20,7 @@ import { ListOrderComponent } from './Components/order/list-order/list-order.com
 import { SupplierDetailsComponent } from './Components/Supplier/supplier-details/supplier-details.component';
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
 import { AuthGuardGuard } from './Shared/helpers/auth-guard.guard';
+import { EmployeeGuard } from './Shared/helpers/employee.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -46,7 +47,7 @@ const routes: Routes = [
     {path: 'suppliers/add', component: AddSupplierComponent},
     {path: 'suppliers/edit/:id', component: EditSupplierComponent},
     //employee
-    {path: 'employee', component:ListEmployeeComponent }
+    {path: 'employee', component:ListEmployeeComponent , canActivate:[EmployeeGuard]}
 
   ]}
 ];

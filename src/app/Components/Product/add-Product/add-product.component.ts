@@ -105,7 +105,6 @@ export class AddProductComponent implements OnInit {
 
 refreshSupplier(){
   this.getSuppliers();
-  console.log("recived")
 
 }
 

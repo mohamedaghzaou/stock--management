@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
       return value
 
     }
-    if(value?.length===0){
+    if(value.length===0){
       return value
     }
     const array=[];

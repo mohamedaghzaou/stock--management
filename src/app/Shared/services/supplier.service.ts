@@ -36,4 +36,9 @@ export class SupplierService {
    SuppliersByProudctId(id:number): Observable<any>{
     return this.http.get<any>(this.baseUrl + '/Supplier/product/' + id);
 }
+Supply(item): Observable<any>{
+  return this.http.post(this.baseUrl + '/SupplierProduct/add', item);
+ }
+
+
 }

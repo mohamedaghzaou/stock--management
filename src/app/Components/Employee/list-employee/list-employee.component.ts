@@ -37,7 +37,9 @@ export class ListEmployeeComponent implements OnInit {
          })
    }
    fill(id:number){
-   this.form.patchValue(this.listEmployee[id]);
+     const Employee = this.listEmployee[id];
+     delete Employee.password;
+   this.form.patchValue(Employee);
    this.mode= "Modifier"
    this.employeeEdit.id = this.listEmployee[id].id;
 

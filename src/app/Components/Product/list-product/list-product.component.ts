@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Shared/Models/Products.model';
+import { Supplier } from 'src/app/Shared/Models/Supplier.model';
 import { ProductService } from 'src/app/Shared/services/product.service';
 import { SupplierService } from 'src/app/Shared/services/supplier.service';
 
@@ -14,9 +15,9 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
 
 })
 export class ListProductComponent implements OnInit {
-  Supplying : boolean= false  ;
+  Supplying : number =0  ;
   listProduct: Product[]=[];
-  listSupplier=[];
+  listSupplier:Supplier[]=[];
   p: number;
   filter:string = "";
   myForm : FormGroup;
@@ -31,7 +32,7 @@ export class ListProductComponent implements OnInit {
 
   getAllProcut(){
      this.ProductService.getProducts().subscribe(data=>{
-       this.listProduct = data
+       this.listProduct = data;
      })
   }
 
@@ -55,13 +56,22 @@ export class ListProductComponent implements OnInit {
       supplier: ['', [Validators.required]]
     });
   }
-  SupplyingProduct() {
-    this.Supplying  = !this.Supplying;
+  SupplyingProduct(id: number) {
+    this.Supplying  = id;
     this.Supplying && this.getSuppliers();
   }
 
   Supply(){
-    
+    const supplier = this.listSupplier.find(x=>x.id==this.myForm.controls["supplier"].value)
+    const product = this.listProduct.find(x=>x.id===this.Supplying)
+    const supplyProduct = { product : product ,supplier:supplier ,price :+this.myForm.controls["price"].value,quantity :+this.myForm.controls["Quantity"].value }
+    this.supplierService.Supply(supplyProduct).subscribe(d=>{
+      this.getAllProcut();
+      this.myForm.reset();
+          }
+          
+          )
+    this.Supplying  = 0;
   }
 
 }

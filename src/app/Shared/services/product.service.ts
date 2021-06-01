@@ -35,7 +35,7 @@ export class ProductService {
   }
   
   updateProduct(item): Observable<any>{
-    return this.http.put(this.baseUrl + '/product/update/', item);
+    return this.http.put(this.baseUrl + '/product/update/', item,{responseType:"text",observe:"body"});
    }
    ProudctBYSupplierId(item:number): Observable<Product>{
     return this.http.get<Product>(this.baseUrl + '/product/supplier/'+item);

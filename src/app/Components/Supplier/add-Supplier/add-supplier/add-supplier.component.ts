@@ -55,7 +55,7 @@ export class AddSupplierComponent implements OnInit {
 
   },error=>{
     this.ConfirmationMessage();
-    this.ErrorMessage = "problem dans l'ajoute de fournisseur"
+    this.ErrorMessage = "Problem dans l'ajoute de fournisseur"
   })
   }
   ConfirmationMessage(){

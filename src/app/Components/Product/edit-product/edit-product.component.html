@@ -3,7 +3,7 @@
         <form [formGroup]="form" (ngSubmit)="updateProduct()">
             <h3 class="text-center">Modifier Un Produit</h3>
 
-            <div *ngIf="isSbmitted" [ngClass]="{'alert alert-success':isAdedd,'alert alert-danger':!isAdedd}" role="alert ">
+            <div *ngIf="isSbmitted" [ngClass]="{'alert alert-success':isAdedd,'alert alert-danger':!isAdedd}" role="alert">
                 {{ErrorMessage}}
             </div>
             <div class="row">

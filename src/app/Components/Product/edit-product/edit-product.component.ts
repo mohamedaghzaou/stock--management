@@ -18,7 +18,6 @@ export class EditProductComponent implements OnInit {
   id :number;
   isAdedd: boolean=false;
   ErrorMessage:string
-  ProudctImage: File=null;
   listSupplier : Supplier[]=[]
   isSbmitted:boolean=false;
   constructor(private fb:FormBuilder,private activeRoute:ActivatedRoute,
@@ -50,23 +49,18 @@ export class EditProductComponent implements OnInit {
    }
   
   updateProduct(){
-    let fromdata :FormData= new FormData();
-   
-    let product = this.form.value
-     product.id=this.id;
-     product.category = {id:this.form.controls["category"].value,name:""}
-     fromdata.append("Product",product)
-     fromdata.append("ProudctImage",this.ProudctImage)
+    let product = {id : this.id ,...this.form.value,category:{id:this.form.controls["category"].value,name:""}};
      console.log(product)
-  //  this.ProductService.updateProduct(product).subscribe(data=>{
-  //   this. ConfirmationMessage();
-      // this.isAdedd =true;
-  //   this.ErrorMessage="produit modifier avec ssucces"
-  //  },error=>{
-  //   this. ConfirmationMessage();
-  //this.isAdedd =false;
-  //   this.ErrorMessage="un problem dans  modification"
-  //  })
+   this.ProductService.updateProduct(product).subscribe(data=>{
+    this. ConfirmationMessage();
+      this.isAdedd =true;
+    this.ErrorMessage="Produit modifier avec ssucces"
+   },error=>{
+     console.log(error)
+    this. ConfirmationMessage();
+      this.isAdedd =false;
+    this.ErrorMessage="Un problem dans modification"
+   })
   }
       cancel(){
           this.router.navigate(["/home/products"])
