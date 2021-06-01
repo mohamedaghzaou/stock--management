@@ -1,6 +1,34 @@
-<div style="width: 50%;">
-    <div style="display: block">
-        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-      </canvas>
+<div class="container">
+
+    <div class="box b1">
+        <h5>Nombre des produits</h5>
+        <p>0</p>
+    </div>
+    <div class="box b2">
+        <h5>Nombre des Fournisseurs</h5>
+        <p>0</p>
+    </div>
+    <div class="box b3">
+        <h5>Revenue</h5>
+        <p>0</p>
+    </div>
+    <div class="box b4">
+        <h5>Produits 0 en stock</h5>
+        <p>0</p>
+    </div>
+
+</div>
+<div class="container mt-2">
+    <div style="width: 45%;">
+        <div style="display: block">
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'line'">
+  </canvas>
+        </div>
+    </div>
+    <div style="width: 45%;">
+        <div style="display: block">
+            <canvas baseChart [datasets]="barChartData" [labels]="lineChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'bar'">
+</canvas>
+        </div>
     </div>
 </div>

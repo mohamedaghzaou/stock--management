@@ -28,9 +28,7 @@ import { FilterPipe } from './Shared/pipes/filter.pipe';
 import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
 import { JwtInterceptorInterceptor } from './Shared/helpers/jwt-interceptor.interceptor';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { NgChartjsModule } from 'ng-chartjs';
-import { ChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
