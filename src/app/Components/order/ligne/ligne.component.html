@@ -5,9 +5,8 @@
             <div class="col-md-12 my-5">
                     <div class="form-group col-md-6 my-2">
                         <label for="">Produits</label>
-                        <select formControlName="idProduct" name="delectionner un destinataire" class="form-control">
-                            <Option value="" disabled selected>Choiser le produit</Option>
-                            
+                        <select formControlName="idProduct" name="delectionner un destinataire" class="form-control" (change)="getProduct()">
+                            <Option value="" selected disabled>Choiser le produit</Option>                          
                             <Option *ngFor="let item of products" value="{{ item.id }}">{{ item.name }}</Option>
                         </select>
                     </div>
@@ -15,19 +14,19 @@
                         
                         <div class="form-group col-md-2">
                             <label for="">Quantite</label>
-                            <input type="number" formControlName="quantity" (change)="change()" name="" class="form-control" placeholder="00" />
+                            <input type="number" max="{{product?.quantityStock}}" min="0" formControlName="quantity" (change)="change()" name="" class="form-control" placeholder="00" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="">prixht</label>
-                            <input type="number"formControlName="prixht" (change)="change()" name="" class="form-control" placeholder="00" />
+                            <input type="number" value="{{product?.price}}" min="0" formControlName="prixht" (change)="change()" name="" class="form-control" placeholder="00" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="">TVA</label>
-                            <input type="number" formControlName="tva" name=""  (change)="change()" class="form-control" value="20" />
+                            <input type="number" formControlName="tva" min="0" name=""  (change)="change()" class="form-control" value="20" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="">Reduction</label>
-                            <input type="number" formControlName="reduction" (change)="change()" name="" class="form-control" placeholder="00.00" />
+                            <input type="number" formControlName="reduction" min="0" (change)="change()" name="" class="form-control" placeholder="00.00" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="">Total HT</label>

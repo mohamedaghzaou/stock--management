@@ -12,6 +12,11 @@ export class DashboardComponent implements OnInit {
   constructor(private OorderService:OrderService){
 
   }
+  sumVents;
+  countClient;
+  countFours;
+
+
   public barChartOptions = {
     scaleShowVerticalLines: true,
     responsive: true,
@@ -37,6 +42,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
           this.getTotalProdouctsOrdered()
           this.getTotalPriceByProducts();
+          this.getSums();
+      this.getFous();
+      this.getClients();
   }
   getTotalPriceByProducts(){
      this.OorderService.TotalPriceByProducts().subscribe((resp:any)=>{
@@ -59,7 +67,31 @@ export class DashboardComponent implements OnInit {
       this.lineChartData = [{data: productNumber, label: 'Produits le Plus Achat'}]
     })
   }
+
+  getSums(){
+    this.OorderService.getTotalVentsByMonth().subscribe(
+      res => this.sumVents = res,
+      err => console.log(err)
+    )
   }
+
+  getClients(){
+    this.OorderService.getTotalCustomer().subscribe(
+      res => this.countClient = res,
+      err => console.log(err)
+    )
+  }
+
+  getFous(){
+    this.OorderService.getTotalSupplier().subscribe(
+      res => this.countFours = res,
+      err => console.log(err)
+    )
+  }
+
+
+  }
+  
    
 
 

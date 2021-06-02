@@ -1,33 +1,67 @@
 <div class="container">
-
-    <div class="box b1">
-        <h5>Nombre des produits</h5>
-        <p>0</p>
-    </div>
-    <div class="box b2">
-        <h5>Nombre des Fournisseurs</h5>
-        <p>0</p>
-    </div>
-    <div class="box b3">
-        <h5>Revenue</h5>
-        <p>0</p>
-    </div>
-    <div class="box b4">
-        <h5>Produits 0 en stock</h5>
-        <p>0</p>
-    </div>
-</div>
-<div class="container mt-2">
-    <div style="width: 45%;">
-        <div style="display: block">
-            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="barChartOptions" [legend]="'true'" [chartType]="'line'">
-  </canvas>
+    <div class="row m-0">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <p class="card-category">Total des Ventes</p>
+                    <h3 class="card-title">
+                        {{sumVents}}
+                        <small>DH</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i>Par Mois...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">person</i>
+                    </div>
+                    <p class="card-category">Clients</p>
+                    <h3 class="card-title"> {{countClient}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="material-icons">person</i> Clients</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">person</i>
+                    </div>
+                    <p class="card-category">Fournisseurs</p>
+                    <h3 class="card-title"> {{countFours}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">person</i> Fournisseurs
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div style="width: 45%;">
-        <div style="display: block">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="'true'" [chartType]="'bar'">
+    <div class="mt-2 ml-3 row">
+        <div style="width: 45%;">
+            <div style="display: block">
+                <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="barChartOptions" [legend]="'true'" [chartType]="'line'">
+  </canvas>
+            </div>
+        </div>
+        <div style="width: 45%;" class="ml-5">
+            <div style="display: block">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="'true'" [chartType]="'bar'">
             </canvas>
+            </div>
         </div>
     </div>
 </div>
