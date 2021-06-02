@@ -94,6 +94,31 @@ export class OrderService {
       }
     );
   }
+  TotalPriceByProducts(): Observable<any> {
+    return this.http.get<any>(this.url + '/order/TotalPriceByProducts').pipe(map(res=>{
+      console.log(res)
+         let date:any = new Date()
+       date = date.setDate(date.getDate()-(date.getDate()+7));
+       date = new Date(date).setHours(0)
+       date = new Date(date).setMinutes(0)
+       date = new Date(date).setSeconds(0)
+       let revenuePerDay:number[]=[]
+       revenuePerDay = revenuePerDay.fill(0,0,7)
+     for(let index = 0; index <res.length; index++){
+       console.log(new Date(res[index]?.dateoperation))
+      let d = (new Date(res[index]?.dateoperation)).getDay()
+        revenuePerDay[d-1]=res[index]?.nombreProduct
+     }
+     let swap = revenuePerDay[0]
+     revenuePerDay[6] =revenuePerDay[0]
+     revenuePerDay[0]= swap
+    return revenuePerDay;
+    }));
+  }
+  TotalProdouctsOrdered(): Observable<any> {
+    return this.http.get<any>(this.url + '/order/TotalProdouctsOrdered' );
+  }
+
 }
 
 export class Ligne {

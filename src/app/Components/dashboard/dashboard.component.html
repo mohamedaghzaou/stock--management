@@ -16,19 +16,18 @@
         <h5>Produits 0 en stock</h5>
         <p>0</p>
     </div>
-
 </div>
 <div class="container mt-2">
     <div style="width: 45%;">
         <div style="display: block">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'line'">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="barChartOptions" [legend]="'true'" [chartType]="'line'">
   </canvas>
         </div>
     </div>
     <div style="width: 45%;">
         <div style="display: block">
-            <canvas baseChart [datasets]="barChartData" [labels]="lineChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'bar'">
-</canvas>
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="'true'" [chartType]="'bar'">
+            </canvas>
         </div>
     </div>
 </div>
