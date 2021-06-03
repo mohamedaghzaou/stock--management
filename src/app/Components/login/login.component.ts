@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     const fd = new FormData();
      fd.append("username",this.loginForm.controls["username"].value )
      fd.append("password", this.loginForm.controls["password"].value)
-     console.log(this.remember)
     this.logInService.LogIn(fd ,this.remember).subscribe(data=>{
       this.ErrorAuth =false
 

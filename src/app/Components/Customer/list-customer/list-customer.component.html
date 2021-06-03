@@ -6,9 +6,9 @@
         <div class="col-lg-12 ">
             <div class="main-box clearfix">
                 <div class="table-responsive">
-                    <div class="row py-3 my-2" >
+                    <div class="row py-3 my-2">
                         <div class="input-group no-border col-md-5">
-                            <input type="text" class="form-control" placeholder="Search..." name="firstname" id="firstname" [(ngModel)]="firstname" (ngModelChange)="Search()">
+                            <input type="text" class="form-control" placeholder="Rechercher..." name="firstname" id="firstname" [(ngModel)]="firstname" (ngModelChange)="Search()">
                         </div>
                         <div class="col-md-3 mx-5"></div>
                         <div class="pull-right col-md-2 ">
@@ -17,11 +17,11 @@
                         </div>
 
                     </div>
-                        
+
                     <table class="table user-list ">
                         <thead>
                             <tr>
-                                <th><span>User</span></th>
+                                <th><span>Client</span></th>
                                 <th><span>Email</span></th>
                                 <th><span>Adresse</span></th>
                                 <th><span>Telephone</span></th>
@@ -75,7 +75,7 @@
 
                         </tbody>
                     </table>
-                    <pagination-controls (pageChange)="p = $event"></pagination-controls>   
+                    <pagination-controls previousLabel=" " nextLabel='' (pageChange)="p = $event"></pagination-controls>
                 </div>
 
             </div>

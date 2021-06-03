@@ -7,7 +7,7 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
   selector: 'app-list-supplier',
   templateUrl: './list-supplier.component.html',
   styleUrls: ['./list-supplier.component.css'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class ListSupplierComponent implements OnInit {
   listSupplier:Supplier[]=[]

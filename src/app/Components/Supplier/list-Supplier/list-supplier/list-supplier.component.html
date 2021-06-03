@@ -5,7 +5,7 @@
     </div>
 </div>
 <table style="background-color: #fff;" class="table table-hover">
-    <thead class="">
+    <thead>
         <tr>
             <th>
                 Nom complete
@@ -31,7 +31,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let supplier of (listSupplier | filter : 'firstname': filter) | paginate: { itemsPerPage: 8, 
-            currentPage: p,totalItems: listSupplier.length }">
+            currentPage: p,totalItems: listSupplier?.length }">
             <td>
                 {{supplier.firstname | uppercase }}{{ " " + supplier.lastname }}
             </td>

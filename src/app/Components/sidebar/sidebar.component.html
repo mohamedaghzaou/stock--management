@@ -1,13 +1,13 @@
 <div class="wrapper" style="background-color: white;">
     <div class="sidebar" data-color="purple" data-background-color="white">
-        <div class="logo"><a class="simple-text logo-normal">
+        <div class="logo"><a class="simple-text logo-normal" routerLink="dashboard">
             Stock Management
         </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="dashboard">
-                        <i class="material-icons">dashboard</i>
+                        <i class="material-icons">bar_chart</i>
                         <p>dashboard</p>
                     </a>
                 </li>
@@ -26,26 +26,28 @@
 
                 <li *ngIf="currentEmployee.role==='admin'" lass="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="employee">
-                        <i class="material-icons">content_paste</i>
+                        <i class="material-icons">badge</i>
                         <p>Employé</p>
                     </a>
                 </li>
                 <li class="nav-item " routerLinkActive="active">
                     <a class="nav-link" routerLink="suppliers">
-                        <i class="material-icons">library_books</i>
+                        <i class="material-icons">
+                            inventory 2
+                            </i>
                         <p>Fournisseur</p>
                     </a>
                 </li>
                 <li class="nav-item " routerLinkActive="active">
-                    <a class="nav-link" routerLink="/home/products">
-                        <i class="material-icons">bubble_chart</i>
+                    <a class="nav-link" routerLink="products">
+                        <i class="material-icons">local_convenience_store</i>
                         <p>Produits</p>
                     </a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="/home/category">
-                        <i class="material-icons">location_ons</i>
-                        <p> Product Catégories
+                        <i class="material-icons">category</i>
+                        <p> Catégories de produits
                         </p>
                     </a>
                 </li>

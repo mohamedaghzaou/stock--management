@@ -2,7 +2,7 @@
     <div class="row my-5">
         <div class="col-md-6">
             <div class="card">
-                <h5 class="card-header text-center strong">Ajouter Category</h5>
+                <h5 class="card-header text-center strong">Ajouter un Catégorie</h5>
                 <div class="card-body text-center">
                     <form action="" [formGroup]='myForm'>
                         <div class="form-group">
@@ -19,7 +19,7 @@
             <table class="table">
                 <thead>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Nom</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
@@ -28,7 +28,6 @@
                         <td>{{ item.name }}</td>
                         <td>
                             <div (click)="delete(item.id)" class="ml-3 delete">
-                                <!-- <i class="fa fa-minus"></i> -->
                                 <i class="fa fa-trash"></i>
                             </div>
                         </td>

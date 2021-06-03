@@ -15,13 +15,13 @@
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3 ">
-                    <span class="mr-3 strong">Créé le :</span> <span> {{ data?.orderDate | date}} </span>
+                    <span class="mr-3 strong">Créé le :</span> <span> {{ data?.orderDate | date:'dd-MM-yyyy'}} </span>
 
                     <!-- <button class="btn" (click)="imprimer()">Imprimer</button>     -->
                     <div class="imprimer btn-primary" (click)="imprimer()">
-                        <i  class=" fa fa-print fa-lg"></i>
-    
-                        </div>
+                        <i class=" fa fa-print fa-lg"></i>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,9 +29,6 @@
 
 
     </div>
-
-
-
     <div class="d-flex justify-content-center row">
         <h3 class="ml-5 my-3">Détail</h3>
         <!-- <div class="col-md-10" *ngIf="data.orderProducts?.length>0"> 

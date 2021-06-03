@@ -47,3 +47,8 @@ p {
 .hader {
     display: flex;
 }
+
+th {
+    color: black !important;
+    background-color: white !important;
+}
