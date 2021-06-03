@@ -30,14 +30,7 @@ export class DashboardComponent implements OnInit {
   };
   public barChartLabels =['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendedi', 'Semedi', 'dimanche'];
   public lineChartLabels =[];;
-  public barChartData : {data , label}[]= [
-    // {data: [65, 59, 80, 81, 56, 55, 40,0], label: 'Series A'},
-    // // {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
-  // public barChartData : number[]= [
-  //   // {data: [65, 59, 80, 81, 56, 55, 40,0], label: 'Series A'},
-  //   // // {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  // ];
+  public barChartData : {data , label}[]= []
   public lineChartData=[];
   ngOnInit(): void {
           this.getTotalProdouctsOrdered()

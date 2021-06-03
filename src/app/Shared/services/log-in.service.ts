@@ -16,7 +16,7 @@ export class LogInService {
   public get currentEmployee(): Employee {
     return this.EmployeeSubject.value;
 }
-  LogIn(logindata): Observable<any>{
+  LogIn(logindata ,remember): Observable<any>{
     return this.http.post<any>(this.baseUrl + '/login',logindata,{observe : "response"}).pipe(map(data=>{
       const E = new Employee();
       E.name = data.body.username;
@@ -26,12 +26,18 @@ export class LogInService {
      return E;
     }),tap(data=>{
       this.EmployeeSubject.next(data)
-      localStorage.setItem("currentUser" ,JSON.stringify(data))
+      if(remember){
+              localStorage.setItem("currentUser" ,JSON.stringify(data))
+      }
     }))
   }
 
   LogOut(){
-    localStorage.removeItem('currentUser');
+    try {
+          localStorage.removeItem('currentUser');
+    } catch (error) {
+      
+    }
     this.EmployeeSubject.next(null);
   }
 

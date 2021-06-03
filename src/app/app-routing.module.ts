@@ -24,6 +24,8 @@ import { EmployeeGuard } from './Shared/helpers/employee.guard';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 const routes: Routes = [
+  {path: '', redirectTo : "home/dashboard"  , pathMatch :"full"  },
+  {path: 'home', redirectTo : "home/dashboard"  , pathMatch :"full"  },
   {path: 'login', component: LoginComponent},
   {path: 'home',
   component: SidebarComponent,canActivate :[AuthGuardGuard],
@@ -48,11 +50,12 @@ const routes: Routes = [
     {path: 'suppliers/add', component: AddSupplierComponent},
     {path: 'suppliers/edit/:id', component: EditSupplierComponent},
     //employee
-    {path: 'employee', component:ListEmployeeComponent , canActivate:[EmployeeGuard]}
-,
-{path: 'dashboard', component:DashboardComponent , }
+    {path: 'employee', component:ListEmployeeComponent , canActivate:[EmployeeGuard]},
+    {path: 'dashboard', component:DashboardComponent  }
+  ]},
+ 
 
-  ]}
+
 ];
 
 @NgModule({

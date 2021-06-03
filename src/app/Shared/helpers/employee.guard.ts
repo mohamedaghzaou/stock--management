@@ -17,7 +17,7 @@ export class EmployeeGuard implements CanActivate {
       if(currentEmployee.role==="admin"){
         return true;
       }
-      this.router.navigate(["/home/suppliers"])
+      this.router.navigate(["/uhome/dashboard"])
     return false;
   }
   

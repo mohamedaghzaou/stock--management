@@ -29,6 +29,7 @@ import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
 import { JwtInterceptorInterceptor } from './Shared/helpers/jwt-interceptor.interceptor';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';import { ChartsModule } from 'ng2-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [       
      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

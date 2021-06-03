@@ -11,3 +11,5 @@
 :root {
     --main-bg-color: rgb(173, 5, 173);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
