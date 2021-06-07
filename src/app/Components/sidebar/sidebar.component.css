@@ -1,4 +1,4 @@
-.add{
+.add {
     position: absolute;
     background-color: white;
     color: black;
@@ -13,14 +13,18 @@
     align-items: center;
 }
 
-
-.nav-item{
+.nav-item {
     position: relative;
 }
 
-
-.add:hover{
+.add:hover {
     transform: rotate(30deg);
-	transition-delay: 1;
-	transition: all 0.5s;
+    transition-delay: 1;
+    transition: all 0.5s;
+}
+
+.logout {
+    position: absolute;
+    bottom: 3rem;
+    left: 2rem;
 }

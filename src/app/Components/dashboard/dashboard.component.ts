@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
   }
   getTotalProdouctsOrdered(){
     this.OorderService.TotalProdouctsOrdered().subscribe( d=>{
+      console.log(d)
       const product=[]
       const productNumber=[]
       for  (const item of d) {
@@ -54,7 +55,6 @@ export class DashboardComponent implements OnInit {
         if(productNumber.length===10){
           break;
         }
-       
       }
       this.lineChartLabels = product;
       this.lineChartData = [{data: productNumber, label: 'Produits le Plus Achat'}]

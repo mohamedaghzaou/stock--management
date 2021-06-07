@@ -362,7 +362,7 @@ template {
         page-break-inside: avoid;
     }
     thead {
-        display: table-header-group;
+        /* display: table-header-group; */
     }
     tr,
     img {

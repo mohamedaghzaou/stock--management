@@ -1,6 +1,6 @@
-<section style="background-color: snow;" class="ftco-section mt-2">
+<section class="ftco-section mt-2">
     <div class="container">
-        <div class="list-header">
+        <!-- <div class="list-header">
             <input type="text" [(ngModel)]="filter" placeholder="Filtre Par Nom " class="form-control ">
             <div>
                 <button class="btn btn-primary text-capitalize " [routerLink]="[ 'add']" style="margin-right: 1vw; ">Ajouter un Produit</button>
@@ -8,13 +8,21 @@
         </div>
         <p style="font-size: .8rem;">
             Nombre des Produit : {{listProduct.length}}
-        </p>
-        <div class="row justify-content-center ">
-        </div>
+        </p> -->
+
         <div class="row">
-            <div class="col-md-12 ">
-                <div class="table-wrap ">
-                    <table class="table ">
+            <div class="row mb-1">
+                <div class="col-lg-10 mb-1">
+                    <input type="text" [(ngModel)]="filter" placeholder="Filtre Par Nom " class="form-control w-50">
+                </div>
+                <div class="col-lg-2 pr-0">
+                    <button class="btn btn-primary text-capitalize text-center" [routerLink]="[ 'add']"><span class="mr-1"><i class="fa fa-plus-circle"></i></span> Produit</button>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="table-wrapg ">
+                    <table class="table table-responsive-sm">
                         <thead class="thead-primary " style="background-color: rgb(173, 5, 173); ">
                             <tr>
                                 <th>&nbsp;</th>
@@ -66,7 +74,7 @@
         <div class=" text-right">
             <i (click)="SupplyingProduct(0)" style="cursor: pointer; " class="fa fa-times-circle fa-2x"></i></div>
         <div>
-            <h5 class=" card-header text-center strong ">Fournir un Produit</h5>
+            <h5 class=" card-header text-center  display-1">Fournir un Produit</h5>
             <div class="card-body text-center ">
                 <form action=" " [formGroup]='myForm'>
                     <div class="row">

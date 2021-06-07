@@ -1,17 +1,17 @@
 <div class="add-container">
     <div class="container contact-form" style="padding-top: 0;">
         <form [formGroup]="form" (ngSubmit)="updateProduct()">
-            <h3 class="text-center">Modifier Un Produit</h3>
+            <h1 class="text-center">Modifier Un Produit</h1>
 
             <div *ngIf="isSbmitted" [ngClass]="{'alert alert-success':isAdedd,'alert alert-danger':!isAdedd}" role="alert">
                 {{ErrorMessage}}
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Nom" formControlName="name" />
-                        <small class="text-danger" *ngIf="form.get('name').errors?.required && form.get('name').touched">Cette champ est obligqtoire                    </small>
-                        <small class="text-danger" *ngIf="form.get('name').invalid && form.get('name').touched && form.get('name').value!==''">Value est invalid</small>
+                    <div class="form-group ">
+                        <input type="text " name="name" class="form-control " placeholder="Nom " formControlName="name" />
+                        <small class="text-danger " *ngIf="form.get( 'name').errors?.required && form.get( 'name').touched ">Cette champ est obligatoire</small>
+                        <small class="text-danger " *ngIf="form.get( 'name').invalid && form.get( 'name').touched && form.get( 'name').value!=='' ">Value est invalid</small>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -25,21 +25,22 @@
                             <small class="text-danger " *ngIf="form.get( 'quantityStock').invalid && form.get( 'quantityStock').touched && form.get( 'quantityStock').value!=='' ">Value est invalid</small>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <select name="category" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" formControlName="category">
-                        <option *ngFor="let c of listCategory" [ngValue]="c.id">{{c.name}}</option>
+                    <div class="row">
+                        <div class="col">
+                            <select name=" category " class="form-select form-select-md" aria-label=".form-select-lg example " formControlName="category">
+                        <option *ngFor="let c of listCategory " [ngValue]="c.id ">{{c.name}}</option>
                       </select>
-                    </div>
-                    <div>
-                        <input type="submit" [disabled]="!form.valid" class="btn btn-success text-capitalize" value="Modifier " style="cursor: pointer;background-color:  rgb(173, 5, 173);border: none;">
-                        <input type="button" class="btn btn-default text-capitalize" value="Annuller " style="cursor: pointer;margin-left: 1rem " (click)="cancel()">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 ">
-                    <div class="form-group ">
-                        <textarea name="description" class="form-control" rows="7" placeholder="Description " formControlName="description"></textarea>
+                    <div class="form-group">
+                        <textarea name="description " class="form-control " rows="5" placeholder="Description " formControlName="description"></textarea>
                     </div>
-
+                </div>
+                <div>
+                    <input type="submit" [disabled]="!form.valid" class="btn btn-success text-capitalize col-xs-6" value="Modifier " style="cursor: pointer;background-color:  rgb(173, 5, 173);border: none;">
+                    <input type="button" class="btn btn-default text-capitalize col-xs-6" value="Annuler " style="cursor: pointer; " (click)="cancel()">
                 </div>
             </div>
         </form>

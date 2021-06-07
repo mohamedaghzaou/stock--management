@@ -28,8 +28,10 @@ import { FilterPipe } from './Shared/pipes/filter.pipe';
 import { EllipsisPipe } from './Shared/pipes/ellipsis.pipe';
 import { ProdutDetailsComponent } from './Components/Product/produt-details/produt-details.component';
 import { JwtInterceptorInterceptor } from './Shared/helpers/jwt-interceptor.interceptor';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';import { ChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     NgxPaginationModule,
     ChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+   // BrowserAnimationsModule
   ],
   providers: [       
      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

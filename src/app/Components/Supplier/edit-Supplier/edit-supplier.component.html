@@ -7,32 +7,33 @@
         <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">
             {{errorMessage}}
         </div>
-        <form class="contact-form row" [formGroup]="form" (ngSubmit)="updatesupplier()">
-            <div class="row col-lg-12">
+        <form class="contact-form" [formGroup]="form" (ngSubmit)="updatesupplier()">
+            <div class="row">
                 <div class="form-field col-lg-6">
-                    <input id="Prenom" class="input-text js-input" type="text" formControlName="firstname" required>
+                    <input id="Prenom" class="input-text " type="text" formControlName="firstname" required>
                     <label class="label" for="Prenom">Prenom : </label>
                 </div>
                 <div class="form-field col-lg-6">
-                    <input id="Nom" class="input-text js-input" type="text" formControlName="lastname" required>
+                    <input id="Nom" class="input-text" type="text" formControlName="lastname" required>
                     <label class="label" for="Nom">Nom :</label>
                 </div>
+                <div class="form-field">
+                    <input id="email" class="input-text" type="email" formControlName="email" required>
+                    <label class="label" for="email">E-mail :</label>
+                </div>
+                <div class="form-field ">
+                    <input id="phone" class="input-text" type="text" formControlName="phone" required>
+                    <label class="label" for="phone">Tel :</label>
+                </div>
+                <div class="form-field ">
+                    <input id="Address" class="input-text" type="text" formControlName="address" required>
+                    <label class="label" for="Address">Address</label>
+                </div>
             </div>
-            <div class="form-field col-lg-12">
-                <input id="email" class="input-text js-input" type="email" formControlName="email" required>
-                <label class="label" for="email">E-mail :</label>
-            </div>
-            <div class="form-field col-lg-12">
-                <input id="phone" class="input-text js-input" type="text" formControlName="phone" required>
-                <label class="label" for="phone">Tel :</label>
-            </div>
-            <div class="form-field col-lg-12">
-                <input id="Address" class="input-text js-input" type="text" formControlName="address" required>
-                <label class="label" for="Address">Address</label>
-            </div>
-            <div class="form-field col-lg-12 ">
-                <input class="submit-btn text-center" type="submit" value="Modifier">
-                <input class="submit-btn text-center text-capitalize ml-3" style="background-color: aliceblue; color: rgb(172, 25, 173);" type="button" value="Annuller" (click)="cancel()">
+
+            <div class="row form-field">
+                <input class="submit-btn text-center text-capitalize col-lg-3" type="submit" value="Modifier">
+                <input class="submit-btn text-center text-capitalize col-lg-3" style="background-color: aliceblue; color: rgb(172, 25, 173);" type="button" value="Annuller" (click)="cancel()">
             </div>
         </form>
     </section>

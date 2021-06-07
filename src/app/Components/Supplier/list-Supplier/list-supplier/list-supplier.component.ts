@@ -1,4 +1,3 @@
-import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Supplier } from 'src/app/Shared/Models/Supplier.model';
@@ -7,13 +6,11 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
   selector: 'app-list-supplier',
   templateUrl: './list-supplier.component.html',
   styleUrls: ['./list-supplier.component.css'],
-  // encapsulation: ViewEncapsulation.None
 })
 export class ListSupplierComponent implements OnInit {
   listSupplier:Supplier[]=[]
   p:number;
   filter:string="";
-  
   constructor(private route:Router,private supplierService:SupplierService ) { }
   ngOnInit(): void {
     this.getAllSupplier();

@@ -86,9 +86,10 @@ export class AddProductComponent implements OnInit {
      price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
      quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
      description : [''],
-     category : [0,[Validators.required]],
-     supplier : [0,[Validators.required]],
+     category : ['',[Validators.required]],
+     supplier : ['',[Validators.required]],
    })
+   this.form.reset()
  }
 
  add() {

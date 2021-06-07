@@ -9,7 +9,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-9 col-xl-7 mx-auto">
-                                <h3 class="display-4 text-center">Log In</h3>
+                                <h1 class="display-5 text-center">Log In</h1>
                                 <p class="text-muted mb-4"></p>
                                 <form [formGroup]="loginForm" (ngSubmit)="logIn()">
                                     <div class="text-center" *ngIf="ErrorAuth">
@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
                                         <input id="customCheck1" (change)="remember=!remember" type="checkbox" [checked]="remember" class="custom-control-input">
-                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                        <label for="customCheck1" class="custom-control-label">Remember Me</label>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign in</button>
                                 </form>
