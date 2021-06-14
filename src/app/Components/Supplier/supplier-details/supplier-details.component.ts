@@ -10,7 +10,7 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
 })
 export class SupplierDetailsComponent implements OnInit {
 
-  supplier:{id,lastname,firstname,email,address,phone};
+  supplier;
   productList;
   constructor(private router :Router,private active : ActivatedRoute,
     private supplierService:SupplierService ,  
@@ -26,16 +26,7 @@ export class SupplierDetailsComponent implements OnInit {
   }
   getSupplier(id:number){
       this.supplierService.getBySupplierId(this.id).subscribe(data=>{
-        console.log(data)
-        this.supplier = {
-          id : data.id,
-          lastname: data.lastname,
-           firstname: data.firstname,
-           email : data.email,
-           address : data.address,
-           phone : data.phone,
-
-          }
+        this.supplier = {...data}
       })
   }
 

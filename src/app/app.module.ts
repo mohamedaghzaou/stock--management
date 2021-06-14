@@ -31,7 +31,6 @@ import { JwtInterceptorInterceptor } from './Shared/helpers/jwt-interceptor.inte
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -70,7 +69,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxPaginationModule,
     ChartsModule,
     BrowserAnimationsModule,
-   // BrowserAnimationsModule
+    BrowserAnimationsModule
   ],
   providers: [       
      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorInterceptor, multi: true },

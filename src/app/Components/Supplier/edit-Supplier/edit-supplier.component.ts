@@ -20,7 +20,7 @@ export class EditSupplierComponent implements OnInit {
   id :number;
   ngOnInit(): void {
     this.buildForm();
-    this.id = + this.activeRoute.snapshot.paramMap.get("id");
+    this.id = +this.activeRoute.snapshot.paramMap.get("id");
   
     this.getsupplier(this.id);
   }
@@ -55,13 +55,14 @@ export class EditSupplierComponent implements OnInit {
       return;
     }
     let  supplier;
-    supplier = {id :this.supplier.id,...this.form.value}
+    supplier = {id :this.id,...this.form.value}
+    console.log(supplier)
     this.supplierService.updateSupplier(supplier).subscribe(data=>{
-     
       this.ConfirmationMessage()
-      this.ErrorMessage="fournisseur modifier avec ssucces"
+      this.ErrorMessage="Fournisseur modifier avec ssucces"
  },error=>{
   this.ConfirmationMessage()
+
   this.ErrorMessage="Problem dans la modification";
  })
   }

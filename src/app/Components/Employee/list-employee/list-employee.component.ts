@@ -8,7 +8,6 @@ import { EmployeeService } from 'src/app/Shared/services/employee.service';
   selector: 'app-list-employee',
   templateUrl: './list-employee.component.html',
   styleUrls: ['./list-employee.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class ListEmployeeComponent implements OnInit {
   mode:string ="Ajouter" ;

@@ -1,19 +1,9 @@
 <section class="ftco-section mt-2">
     <div class="container">
-        <!-- <div class="list-header">
-            <input type="text" [(ngModel)]="filter" placeholder="Filtre Par Nom " class="form-control ">
-            <div>
-                <button class="btn btn-primary text-capitalize " [routerLink]="[ 'add']" style="margin-right: 1vw; ">Ajouter un Produit</button>
-            </div>
-        </div>
-        <p style="font-size: .8rem;">
-            Nombre des Produit : {{listProduct.length}}
-        </p> -->
-
         <div class="row">
             <div class="row mb-1">
                 <div class="col-lg-10 mb-1">
-                    <input type="text" [(ngModel)]="filter" placeholder="Filtre Par Nom " class="form-control w-50">
+                    <input type="text" [(ngModel)]="filter" placeholder="Chercher..." class="form-control w-50">
                 </div>
                 <div class="col-lg-2 pr-0">
                     <button class="btn btn-primary text-capitalize text-center" [routerLink]="[ 'add']"><span class="mr-1"><i class="fa fa-plus-circle"></i></span> Produit</button>
@@ -68,7 +58,7 @@
         </div>
     </div>
 </section>
-<pagination-controls *ngIf="filter.length===0 || listProduct.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+<pagination-controls style="background-color: red;" *ngIf="filter.length===0 || listProduct.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
 <div class="modal" *ngIf="Supplying">
     <div class="modal-content">
         <div class=" text-right">

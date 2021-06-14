@@ -59,8 +59,10 @@ export class AddProductComponent implements OnInit {
     //prepare product for backend
    let fromdata :FormData= new FormData();
    let product = this.form.value
-    delete product.supplier
-    product.category = {id:this.form.controls["category"].value,name:""}
+  delete product.supplier
+   product.category = {id:this.form.controls["category"].value,name:""}
+  console.log(this.form.value)
+
     fromdata.append("Supplier",JSON.stringify(this.form.controls["supplier"].value))
     fromdata.append("Product",JSON.stringify( product))
    this.ProductService.addProduct(fromdata).subscribe(data=>{
@@ -82,17 +84,17 @@ export class AddProductComponent implements OnInit {
 
   buildForm(){
     this.form= this.fb.group({
-     name : ['',[Validators.required]],
-     price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
-     quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
-     description : [''],
-     category : ['',[Validators.required]],
+      name : ['',[Validators.required]],
+      price : ['',[Validators.pattern("^[0-9]+(\.[0-9]+)?$"),Validators.required]],
+      quantityStock : ['',[Validators.pattern("^[0-9]+$"),Validators.required]],
+      description : [''],
+      category : ['',[Validators.required]],
      supplier : ['',[Validators.required]],
    })
-   this.form.reset()
  }
 
  add() {
+   console.log(this.myForm.value)
   this.categoryService.addItem(this.myForm.value).subscribe(
     res => {
       this.myForm.reset();

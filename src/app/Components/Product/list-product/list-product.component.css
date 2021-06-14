@@ -71,3 +71,16 @@ thead {
     width: 70%;
     margin-top: 3rem;
 }
+
+.page-item.active .page-link {
+    background-color: red;
+    border-color: red;
+}
+
+.page-link {
+    color: red;
+}
+
+.page-link:hover {
+    color: red;
+}

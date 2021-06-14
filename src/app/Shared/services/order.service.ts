@@ -117,14 +117,13 @@ export class OrderService {
   TotalPriceByProducts(): Observable<any> {
     return this.http.get<any>(this.url + '/order/TotalPriceByProducts').pipe(map(res=>{
        let revenuePerDay:number[]=[]
-       revenuePerDay = revenuePerDay.fill(0,0,7)
+       revenuePerDay = revenuePerDay.fill(0,0,6)
      for(let index = 0; index <res.length; index++){
-      let d = (new Date(res[index]?.dateoperation)).getDay()
-        revenuePerDay[d-1]=res[index]?.nombreProduct
+      let d = (new Date(res[index]?.dateoperation)).getDay()-1
+        revenuePerDay[d]=res[index]?.nombreProduct
+
      }
-     let swap = revenuePerDay[0]
-     revenuePerDay[6] =revenuePerDay[0]
-     revenuePerDay[0]= swap
+      revenuePerDay[6] =revenuePerDay[-1]    
     return revenuePerDay;
     }));
   }

@@ -9,8 +9,8 @@ import { LogInService } from 'src/app/Shared/services/log-in.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  ErrorAuth: boolean
-  loginForm :FormGroup
+  ErrorAuth: boolean;
+  loginForm :FormGroup;
   remember : boolean =false;
   constructor(private fb:FormBuilder,
     private logInService :LogInService,
@@ -25,12 +25,10 @@ export class LoginComponent implements OnInit {
     }
     this.buildForm();
   }
-
   buildForm(){
     this.loginForm = this.fb.group({
       username : ["", Validators.required],
       password : ["", Validators.required],
-
     })
   }
   logIn(){
@@ -39,7 +37,6 @@ export class LoginComponent implements OnInit {
      fd.append("password", this.loginForm.controls["password"].value)
     this.logInService.LogIn(fd ,this.remember).subscribe(data=>{
       this.ErrorAuth =false
-
       this.router.navigate(["home/dashboard"])
     }, error=>{
         this.ErrorAuth =true

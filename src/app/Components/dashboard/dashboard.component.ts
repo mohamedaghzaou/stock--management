@@ -46,7 +46,6 @@ export class DashboardComponent implements OnInit {
   }
   getTotalProdouctsOrdered(){
     this.OorderService.TotalProdouctsOrdered().subscribe( d=>{
-      console.log(d)
       const product=[]
       const productNumber=[]
       for  (const item of d) {

@@ -28,7 +28,6 @@ export class ListOrderComponent implements OnInit {
           res => {
             return res.customer.firstname.toLocaleLowerCase().match(this.firstname.toLocaleLowerCase()) 
                    || res.customer.lastname.toLocaleLowerCase().match(this.firstname.toLocaleLowerCase())
-                  //  || res.email.toLocaleLowerCase().match(this.firstname.toLocaleLowerCase());
           }
         )
     }

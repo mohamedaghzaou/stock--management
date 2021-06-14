@@ -30,7 +30,7 @@
         <hr>
         <div class="row mb-1">
             <div class="col-lg-9">
-                <input type="text" placeholder="Filtre Par Nom " [(ngModel)]="filter " #filterValue class="form-control w-75">
+                <input type="text" placeholder="Chercher..." [(ngModel)]="filter " #filterValue class="form-control w-75">
             </div>
             <div class="col-lg-3 mt-3">
                 <p *ngIf="filter?.length===0 ">
@@ -58,5 +58,5 @@
             </tr>
         </tbody>
     </table>
-    <pagination-controls *ngIf="filter?.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
+    <pagination-controls style="background-color: red;" *ngIf="filter?.length===0 " directionLinks="true " previousLabel=" " nextLabel='' (pageChange)="pagechangeHandler($event) "></pagination-controls>
 </div>

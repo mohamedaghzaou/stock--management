@@ -4,7 +4,7 @@
         <div *ngIf="isAdedd" class="alert alert-success" role="alert ">
             {{ErrorMessage}}
         </div>
-        <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert">
+        <div *ngIf="errorMessage.length!=0" [ngClass]="{'alert alert-success':isAdedd,'alert alert-danger':!isAdedd}" role="alert">
             {{errorMessage}}
         </div>
         <form class="contact-form" [formGroup]="form" (ngSubmit)="updatesupplier()">

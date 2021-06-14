@@ -11,7 +11,6 @@ import { SupplierService } from 'src/app/Shared/services/supplier.service';
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
   styleUrls: ['./list-product.component.css'],
-  encapsulation: ViewEncapsulation.None
 
 })
 export class ListProductComponent implements OnInit {
@@ -65,7 +64,9 @@ export class ListProductComponent implements OnInit {
     const supplier = this.listSupplier.find(x=>x.id==this.myForm.controls["supplier"].value)
     const product = this.listProduct.find(x=>x.id===this.Supplying)
     const supplyProduct = { product : product ,supplier:supplier ,price :+this.myForm.controls["price"].value,quantity :+this.myForm.controls["Quantity"].value }
+    console.log(supplyProduct)
     this.supplierService.Supply(supplyProduct).subscribe(d=>{
+      console.log(d)
       this.getAllProcut();
       this.myForm.reset();
           }
